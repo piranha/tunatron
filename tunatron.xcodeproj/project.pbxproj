@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9462923915A1EE750067701C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9462923815A1EE750067701C /* Cocoa.framework */; };
+		9462924315A1EE750067701C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9462924115A1EE750067701C /* InfoPlist.strings */; };
+		9462924515A1EE750067701C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462924415A1EE750067701C /* main.m */; };
+		9462924915A1EE750067701C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9462924715A1EE750067701C /* Credits.rtf */; };
+		9462924C15A1EE750067701C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462924B15A1EE750067701C /* AppDelegate.m */; };
+		9462924F15A1EE750067701C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9462924D15A1EE750067701C /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9462923415A1EE750067701C /* tunatron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tunatron.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9462923815A1EE750067701C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9462923B15A1EE750067701C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9462923C15A1EE750067701C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9462923D15A1EE750067701C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9462924015A1EE750067701C /* tunatron-Info.plist */ = {isa = PBXFileReference; path = "tunatron-Info.plist"; sourceTree = "<group>"; };
+		9462924215A1EE750067701C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9462924415A1EE750067701C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9462924615A1EE750067701C /* tunatron-Prefix.pch */ = {isa = PBXFileReference; path = "tunatron-Prefix.pch"; sourceTree = "<group>"; };
+		9462924815A1EE750067701C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		9462924A15A1EE750067701C /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		9462924B15A1EE750067701C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9462924E15A1EE750067701C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9462923115A1EE750067701C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9462923915A1EE750067701C /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9462922915A1EE750067701C = {
+			isa = PBXGroup;
+			children = (
+				9462923E15A1EE750067701C /* tunatron */,
+				9462923715A1EE750067701C /* Frameworks */,
+				9462923515A1EE750067701C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9462923515A1EE750067701C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9462923415A1EE750067701C /* tunatron.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9462923715A1EE750067701C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9462923815A1EE750067701C /* Cocoa.framework */,
+				9462923A15A1EE750067701C /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9462923A15A1EE750067701C /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9462923B15A1EE750067701C /* AppKit.framework */,
+				9462923C15A1EE750067701C /* CoreData.framework */,
+				9462923D15A1EE750067701C /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9462923E15A1EE750067701C /* tunatron */ = {
+			isa = PBXGroup;
+			children = (
+				9462924A15A1EE750067701C /* AppDelegate.h */,
+				9462924B15A1EE750067701C /* AppDelegate.m */,
+				9462924D15A1EE750067701C /* MainMenu.xib */,
+				9462923F15A1EE750067701C /* Supporting Files */,
+			);
+			path = tunatron;
+			sourceTree = "<group>";
+		};
+		9462923F15A1EE750067701C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9462924015A1EE750067701C /* tunatron-Info.plist */,
+				9462924115A1EE750067701C /* InfoPlist.strings */,
+				9462924415A1EE750067701C /* main.m */,
+				9462924615A1EE750067701C /* tunatron-Prefix.pch */,
+				9462924715A1EE750067701C /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9462923315A1EE750067701C /* tunatron */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9462925215A1EE750067701C /* Build configuration list for PBXNativeTarget "tunatron" */;
+			buildPhases = (
+				9462923015A1EE750067701C /* Sources */,
+				9462923115A1EE750067701C /* Frameworks */,
+				9462923215A1EE750067701C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tunatron;
+			productName = tunatron;
+			productReference = 9462923415A1EE750067701C /* tunatron.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9462922B15A1EE750067701C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 9462922E15A1EE750067701C /* Build configuration list for PBXProject "tunatron" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9462922915A1EE750067701C;
+			productRefGroup = 9462923515A1EE750067701C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9462923315A1EE750067701C /* tunatron */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9462923215A1EE750067701C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9462924315A1EE750067701C /* InfoPlist.strings in Resources */,
+				9462924915A1EE750067701C /* Credits.rtf in Resources */,
+				9462924F15A1EE750067701C /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9462923015A1EE750067701C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9462924515A1EE750067701C /* main.m in Sources */,
+				9462924C15A1EE750067701C /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9462924115A1EE750067701C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9462924215A1EE750067701C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9462924715A1EE750067701C /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9462924815A1EE750067701C /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		9462924D15A1EE750067701C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9462924E15A1EE750067701C /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9462925015A1EE750067701C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9462925115A1EE750067701C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9462925315A1EE750067701C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tunatron/tunatron-Prefix.pch";
+				INFOPLIST_FILE = "tunatron/tunatron-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9462925415A1EE750067701C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tunatron/tunatron-Prefix.pch";
+				INFOPLIST_FILE = "tunatron/tunatron-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9462922E15A1EE750067701C /* Build configuration list for PBXProject "tunatron" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9462925015A1EE750067701C /* Debug */,
+				9462925115A1EE750067701C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9462925215A1EE750067701C /* Build configuration list for PBXNativeTarget "tunatron" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9462925315A1EE750067701C /* Debug */,
+				9462925415A1EE750067701C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9462922B15A1EE750067701C /* Project object */;
+}
