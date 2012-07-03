@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TableController : NSViewController 
-<NSTableViewDataSource, NSTableViewDelegate> {
-    NSMutableArray *songs;
-}
+@interface TableController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView;
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;

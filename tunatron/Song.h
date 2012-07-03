@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Song : NSObject {
-    NSString *_artist;
-    NSString *_name;
-}
+@interface Song : NSObject
 
 - (id)initWithArtist:(NSString *)artist andName:(NSString *)name;
 - (NSString *)stringForColumn:(NSTableColumn *)column;
