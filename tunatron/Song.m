@@ -14,10 +14,10 @@
 @synthesize name = _name;
 
 - (id)initWithArtist:(NSString *)artist andName:(NSString *)name {
-    self = [super init];
+    if (!(self = [super init])) return self;
+
     self.artist = artist;
     self.name = name;
-    
     return self;
 }
 
