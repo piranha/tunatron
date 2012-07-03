@@ -7,7 +7,23 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#define ITUNESLIBRARY [@"~/Music/iTunes/iTunes Music Library.xml" stringByStandardizingPath]
 
-@interface SearchController : NSView
+@class iTunesApplication;
+@class SBElementArray;
+
+@interface SearchController : NSObject <NSTableViewDataSource>
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView;
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+
+@property (strong) NSDictionary *library;
+@property (strong) NSMutableArray *songs;
+
+@property (strong) iTunesApplication *itunes;
+@property (strong) SBElementArray *tracks;
+
+// UI elements
+@property (weak) IBOutlet NSTableView *table;
 
 @end

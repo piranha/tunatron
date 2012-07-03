@@ -15,7 +15,6 @@
 		9462924F15A1EE750067701C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9462924D15A1EE750067701C /* MainMenu.xib */; };
 		9462925715A1EF6A0067701C /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462925615A1EF6A0067701C /* SearchController.m */; };
 		9462925F15A32F700067701C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9462925E15A32F700067701C /* ScriptingBridge.framework */; };
-		9462926315A333630067701C /* TableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462926215A333630067701C /* TableController.m */; };
 		9462926615A33B000067701C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462926515A33B000067701C /* Song.m */; };
 /* End PBXBuildFile section */
 
@@ -37,8 +36,6 @@
 		9462925615A1EF6A0067701C /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
 		9462925E15A32F700067701C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		9462926015A32FA20067701C /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
-		9462926115A333630067701C /* TableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableController.h; sourceTree = "<group>"; };
-		9462926215A333630067701C /* TableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableController.m; sourceTree = "<group>"; };
 		9462926415A33B000067701C /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		9462926515A33B000067701C /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,8 +97,6 @@
 				9462924A15A1EE750067701C /* AppDelegate.h */,
 				9462924B15A1EE750067701C /* AppDelegate.m */,
 				9462924D15A1EE750067701C /* MainMenu.xib */,
-				9462926115A333630067701C /* TableController.h */,
-				9462926215A333630067701C /* TableController.m */,
 				9462925515A1EF6A0067701C /* SearchController.h */,
 				9462925615A1EF6A0067701C /* SearchController.m */,
 				9462923F15A1EE750067701C /* Supporting Files */,
@@ -189,7 +184,6 @@
 				9462924515A1EE750067701C /* main.m in Sources */,
 				9462924C15A1EE750067701C /* AppDelegate.m in Sources */,
 				9462925715A1EF6A0067701C /* SearchController.m in Sources */,
-				9462926315A333630067701C /* TableController.m in Sources */,
 				9462926615A33B000067701C /* Song.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

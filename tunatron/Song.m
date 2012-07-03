@@ -13,6 +13,13 @@
 @synthesize artist = _artist;
 @synthesize name = _name;
 
++ (id)newWithArtist:(NSString *)artist name:(NSString *)name {
+    Song * newSong = [super new];
+    newSong.artist = artist;
+    newSong.name = name;
+    return newSong;
+}
+
 - (id)initWithArtist:(NSString *)artist andName:(NSString *)name {
     if (!(self = [super init])) return self;
 
