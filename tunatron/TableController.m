@@ -22,7 +22,7 @@
 
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return 1;
+    return self.songs.count;
 }
 
 - (id)tableView:(NSTableView *)tableView 
