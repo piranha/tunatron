@@ -19,17 +19,9 @@
 - (void)awakeFromNib {
     self.songs = [NSMutableArray new];
 
-    NSDictionary * prefs = [NSDictionary
-                            dictionaryWithContentsOfFile:
-                            @"~/Library/Preferences/com.apple.itunes.plist"];
-    NSString * libraryPath = [prefs
-                              objectForKey:@"alis:11345:Music Folder Location"];
-    if (!libraryPath) {
-        libraryPath = ITUNESLIBRARY;
-    }
+    NSString * libraryPath = [self iTunesLibraryPath];
     NSDictionary * library = [NSDictionary
                               dictionaryWithContentsOfFile:libraryPath];
-
     self.tracks = [library objectForKey:@"Tracks"];
 
     [self searchFor:@""];
@@ -72,6 +64,19 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     }
 
     return [song stringForColumn:tableColumn];
+}
+
+// utility
+
+- (NSString *)iTunesLibraryPath {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *userPref = [userDefaults persistentDomainForName:@"com.apple.iApps"];
+
+    NSArray *recentDatabases = [userPref objectForKey:@"iTunesRecentDatabases"];
+    NSString *path = [recentDatabases objectAtIndex:0];
+    if (!path)
+        return ITUNESLIBRARY;
+    return [[NSURL URLWithString:path] path];
 }
 
 @end
