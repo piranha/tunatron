@@ -10,13 +10,13 @@
 
 @implementation Song
 
-@synthesize artist;
-@synthesize name;
+@synthesize artist = _artist;
+@synthesize name = _name;
 
-- (id)initWithArtist:(NSString *)theArtist andName:(NSString *)theName {
+- (id)initWithArtist:(NSString *)artist andName:(NSString *)name {
     self = [super init];
-    self.artist = theArtist;
-    self.name = theName;
+    self.artist = artist;
+    self.name = name;
     
     return self;
 }
