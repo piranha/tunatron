@@ -20,14 +20,6 @@
     return newSong;
 }
 
-- (id)initWithArtist:(NSString *)artist andName:(NSString *)name {
-    if (!(self = [super init])) return self;
-
-    self.artist = artist;
-    self.name = name;
-    return self;
-}
-
 - (NSString *)stringForColumn:(NSTableColumn *)column {
     return [self valueForKey:[column identifier]];
 }

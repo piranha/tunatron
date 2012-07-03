@@ -11,7 +11,6 @@
 @interface Song : NSObject
 
 + newWithArtist:(NSString *)artist name:(NSString *)name;
-- (id)initWithArtist:(NSString *)artist andName:(NSString *)name;
 - (NSString *)stringForColumn:(NSTableColumn *)column;
 
 @property (copy) NSString *artist;
