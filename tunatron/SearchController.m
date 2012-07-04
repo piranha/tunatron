@@ -8,34 +8,50 @@
 
 #import "SearchController.h"
 #import "iTunes.h"
-#import "Song.h"
+#import "Track.h"
 
 @implementation SearchController
 @synthesize table = _table;
 
-@synthesize songs = _songs;
+@synthesize found = _found;
 @synthesize tracks = _tracks;
+@synthesize itunes = _itunes;
 
 - (void)awakeFromNib {
-    self.songs = [NSMutableArray new];
+    self.found = [NSMutableArray new];
+    self.itunes = [SBApplication
+                   applicationWithBundleIdentifier:@"com.apple.iTunes"];
 
     NSString * libraryPath = [self iTunesLibraryPath];
-    NSDictionary * library = [NSDictionary
-                              dictionaryWithContentsOfFile:libraryPath];
-    self.tracks = [library objectForKey:@"Tracks"];
+    NSDictionary * tracks = [[NSDictionary
+                              dictionaryWithContentsOfFile:libraryPath]
+                             objectForKey:@"Tracks"];
+
+    self.tracks = [NSMutableArray arrayWithCapacity:tracks.count];
+    for (NSString * key in [tracks keyEnumerator]) {
+        [self.tracks
+         addObject:[Track withDictionary:[tracks objectForKey:key]]];
+    }
+
+    [self.tracks
+     sortUsingComparator:^NSComparisonResult(Track *t1, Track *t2) {
+         return [t1 compare:t2];
+    }];
 
     [self searchFor:@""];
 }
 
 - (void)searchFor:(NSString *)value {
-    NSString *name = [NSString stringWithFormat:@"%d", [self.tracks count]];
-    Song *song = [Song newWithArtist:value name:name];
+    [self.found removeAllObjects];
 
-    if (self.songs.count) {
-        [self.songs replaceObjectAtIndex:0 withObject:song];
-    } else {
-        [self.songs addObject:song];
-    }
+    [self.tracks
+     enumerateObjectsUsingBlock:^(Track *track, NSUInteger idx, BOOL *stop) {
+         if ([track.artist rangeOfString:value].location == NSNotFound) {
+             return;
+         }
+         [self.found addObject:[NSNumber numberWithInt:idx]];
+    }];
+
     [self.table reloadData];
 }
 
@@ -50,20 +66,22 @@
 // table data source
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return self.songs.count;
+    return self.found.count;
 }
 
 - (id)tableView:(NSTableView *)tableView
 objectValueForTableColumn:(NSTableColumn *)tableColumn
             row:(NSInteger)row {
-    Song *song = [self.songs objectAtIndex:row];
+    NSNumber *idx = [self.found objectAtIndex:row];
 
-    if (!song) {
+    if (idx == NULL) {
         NSLog(@"No song at index %ld", row);
         return NULL;
     }
 
-    return [song stringForColumn:tableColumn];
+    Track *track = [self.tracks objectAtIndex:[idx integerValue]];
+
+    return [track stringForColumn:tableColumn];
 }
 
 // utility

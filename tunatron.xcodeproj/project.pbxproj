@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9445241615A49F4D00B55A48 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445241515A49F4D00B55A48 /* Track.m */; };
 		9462923915A1EE750067701C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9462923815A1EE750067701C /* Cocoa.framework */; };
 		9462924315A1EE750067701C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9462924115A1EE750067701C /* InfoPlist.strings */; };
 		9462924515A1EE750067701C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462924415A1EE750067701C /* main.m */; };
@@ -15,10 +16,11 @@
 		9462924F15A1EE750067701C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9462924D15A1EE750067701C /* MainMenu.xib */; };
 		9462925715A1EF6A0067701C /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462925615A1EF6A0067701C /* SearchController.m */; };
 		9462925F15A32F700067701C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9462925E15A32F700067701C /* ScriptingBridge.framework */; };
-		9462926615A33B000067701C /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462926515A33B000067701C /* Song.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9445241415A49F4D00B55A48 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		9445241515A49F4D00B55A48 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		9462923415A1EE750067701C /* tunatron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tunatron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9462923815A1EE750067701C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9462923B15A1EE750067701C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -36,8 +38,6 @@
 		9462925615A1EF6A0067701C /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
 		9462925E15A32F700067701C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		9462926015A32FA20067701C /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
-		9462926415A33B000067701C /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
-		9462926515A33B000067701C /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +99,9 @@
 				9462924D15A1EE750067701C /* MainMenu.xib */,
 				9462925515A1EF6A0067701C /* SearchController.h */,
 				9462925615A1EF6A0067701C /* SearchController.m */,
+				9445241415A49F4D00B55A48 /* Track.h */,
+				9445241515A49F4D00B55A48 /* Track.m */,
 				9462923F15A1EE750067701C /* Supporting Files */,
-				9462926415A33B000067701C /* Song.h */,
-				9462926515A33B000067701C /* Song.m */,
 			);
 			path = tunatron;
 			sourceTree = "<group>";
@@ -184,7 +184,7 @@
 				9462924515A1EE750067701C /* main.m in Sources */,
 				9462924C15A1EE750067701C /* AppDelegate.m in Sources */,
 				9462925715A1EF6A0067701C /* SearchController.m in Sources */,
-				9462926615A33B000067701C /* Song.m in Sources */,
+				9445241615A49F4D00B55A48 /* Track.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +306,7 @@
 				9462925415A1EE750067701C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

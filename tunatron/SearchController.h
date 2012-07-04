@@ -10,15 +10,17 @@
 #define ITUNESLIBRARY [@"~/Music/iTunes/iTunes Music Library.xml" stringByStandardizingPath]
 
 @class iTunesApplication;
-@class SBElementArray;
 
 @interface SearchController : NSObject <NSTableViewDataSource>
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView;
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+- (id)tableView:(NSTableView *)tableView
+objectValueForTableColumn:(NSTableColumn *)tableColumn
+            row:(NSInteger)row;
 
-@property (strong) NSMutableArray *songs;
-@property (strong) NSDictionary *tracks;
+@property (strong) NSMutableArray *found;
+@property (strong) NSMutableArray *tracks;
+@property (strong) iTunesApplication *itunes;
 
 // UI elements
 @property (weak) IBOutlet NSTableView *table;
