@@ -12,12 +12,16 @@
 
 + withDictionary:(NSDictionary *)data;
 - (NSComparisonResult)compare:(Track *)other;
-- (BOOL *)match:(NSString *)value;
+- (BOOL)matches:(NSString *)value;
 - (NSString *)stringForColumn:(NSTableColumn *)column;
 
 @property (copy) NSString *artist;
 @property (copy) NSString *year;
 @property (copy) NSString *album;
+@property (copy) NSString *cd;
+@property (copy) NSString *number;
 @property (copy) NSString *name;
+
+@property (copy) NSString *lower;
 
 @end

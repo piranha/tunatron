@@ -43,13 +43,13 @@
 
 - (void)searchFor:(NSString *)value {
     [self.found removeAllObjects];
+    value = [value lowercaseString];
 
     [self.tracks
      enumerateObjectsUsingBlock:^(Track *track, NSUInteger idx, BOOL *stop) {
-         if ([track.artist rangeOfString:value].location == NSNotFound) {
-             return;
+         if ([track matches:value]) {
+             [self.found addObject:[NSNumber numberWithInt:idx]];
          }
-         [self.found addObject:[NSNumber numberWithInt:idx]];
     }];
 
     [self.table reloadData];
