@@ -7,6 +7,8 @@
 //
 
 #import "Track.h"
+#import "NSString+Scoring.h"
+#import "ScoredTrack.h"
 
 @implementation Track
 
@@ -17,6 +19,7 @@
 @synthesize number = _number;
 @synthesize name = _name;
 
+@synthesize repr = _repr;
 @synthesize lower = _lower;
 
 + (id)withDictionary:(NSDictionary *)data {
@@ -28,12 +31,13 @@
     new.number = [data objectForKey:@"Track Number"];
     new.name = [data objectForKey:@"Name"];
 
-    new.lower = [[new repr] lowercaseString];
+    new.repr = [new representation];
+    new.lower = [new.repr lowercaseString];
 
     return new;
 }
 
-- (NSString *)repr {
+- (NSString *)representation {
     return [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@",
             self.artist,
             self.year,
@@ -44,12 +48,24 @@
 }
 
 - (NSComparisonResult)compare:(Track *)other {
-    return [[self repr] compare:[other repr]];
+    return [self.repr compare:other.repr];
 }
 
 - (BOOL)matches:(NSString *)value {
     NSRange result = [self.lower rangeOfString:value];
     return result.location != NSNotFound;
+}
+
+- (CGFloat)score:(NSString *)abbreviation {
+    return [self.repr scoreForAbbreviation:abbreviation];
+}
+
+- (ScoredTrack *)scoredTrack:(NSString *)abbreviation {
+    CGFloat score = [self score:abbreviation];
+    if (score == 0) {
+        return nil;
+    }
+    return [ScoredTrack withScore:score andTrack:self];
 }
 
 - (NSString *)stringForColumn:(NSTableColumn *)column {

@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class ScoredTrack;
+
 @interface Track : NSObject
 
 + withDictionary:(NSDictionary *)data;
 - (NSComparisonResult)compare:(Track *)other;
 - (BOOL)matches:(NSString *)value;
+- (CGFloat)score:(NSString *)abbreviation;
+- (ScoredTrack *)scoredTrack:(NSString *)abbreviation;
 - (NSString *)stringForColumn:(NSTableColumn *)column;
 
 @property (copy) NSString *artist;
@@ -22,6 +26,7 @@
 @property (copy) NSString *number;
 @property (copy) NSString *name;
 
+@property (copy) NSString *repr;
 @property (copy) NSString *lower;
 
 @end

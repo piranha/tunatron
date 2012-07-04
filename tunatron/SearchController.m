@@ -9,6 +9,7 @@
 #import "SearchController.h"
 #import "iTunes.h"
 #import "Track.h"
+#import "ScoredTrack.h"
 
 @implementation SearchController
 @synthesize table = _table;
@@ -47,11 +48,13 @@
 
     [self.tracks
      enumerateObjectsUsingBlock:^(Track *track, NSUInteger idx, BOOL *stop) {
-         if ([track matches:value]) {
-             [self.found addObject:[NSNumber numberWithInt:idx]];
+         ScoredTrack * scored = [track scoredTrack:value];
+         if (scored) {
+             [self.found addObject:scored];
          }
     }];
-
+    
+    [self.found sortUsingSelector:@selector(score)];
     [self.table reloadData];
 }
 
@@ -72,16 +75,14 @@
 - (id)tableView:(NSTableView *)tableView
 objectValueForTableColumn:(NSTableColumn *)tableColumn
             row:(NSInteger)row {
-    NSNumber *idx = [self.found objectAtIndex:row];
+    ScoredTrack * item = [self.found objectAtIndex:row];
 
-    if (idx == NULL) {
-        NSLog(@"No song at index %ld", row);
+    if (item == NULL) {
+        NSLog(@"No track at index %ld", row);
         return NULL;
     }
 
-    Track *track = [self.tracks objectAtIndex:[idx integerValue]];
-
-    return [track stringForColumn:tableColumn];
+    return [item.track stringForColumn:tableColumn];
 }
 
 // utility
