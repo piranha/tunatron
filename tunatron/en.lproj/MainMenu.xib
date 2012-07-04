@@ -1301,7 +1301,7 @@
 			<object class="NSWindowTemplate" id="972006081">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{335, 390}, {750, 477}}</string>
+				<string key="NSWindowRect">{{316, 165}, {750, 477}}</string>
 				<int key="NSWTFlags">1954021376</int>
 				<string key="NSWindowTitle">tunatron</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -1468,7 +1468,7 @@
 													<bool key="NSIsEditable">YES</bool>
 													<reference key="NSTableView" ref="417685121"/>
 												</object>
-												<object class="NSTableColumn" id="936592536">
+												<object class="NSTableColumn" id="995316033">
 													<string key="NSIdentifier">year</string>
 													<double key="NSWidth">64</double>
 													<double key="NSMinWidth">10</double>
@@ -1478,7 +1478,7 @@
 														<int key="NSCellFlags2">2048</int>
 														<string key="NSContents">Year</string>
 														<reference key="NSSupport" ref="26"/>
-														<object class="NSColor" key="NSBackgroundColor" id="852142592">
+														<object class="NSColor" key="NSBackgroundColor" id="693989882">
 															<int key="NSColorSpace">6</int>
 															<string key="NSCatalogName">System</string>
 															<string key="NSColorName">headerColor</string>
@@ -1486,7 +1486,7 @@
 														</object>
 														<reference key="NSTextColor" ref="37235658"/>
 													</object>
-													<object class="NSTextFieldCell" key="NSDataCell" id="643289890">
+													<object class="NSTextFieldCell" key="NSDataCell" id="696183059">
 														<int key="NSCellFlags">337772096</int>
 														<int key="NSCellFlags2">2048</int>
 														<string key="NSContents">Text Cell</string>
@@ -1500,7 +1500,7 @@
 													<bool key="NSIsEditable">YES</bool>
 													<reference key="NSTableView" ref="417685121"/>
 												</object>
-												<object class="NSTableColumn" id="222464541">
+												<object class="NSTableColumn" id="747651296">
 													<string key="NSIdentifier">album</string>
 													<double key="NSWidth">224</double>
 													<double key="NSMinWidth">10</double>
@@ -1510,10 +1510,10 @@
 														<int key="NSCellFlags2">2048</int>
 														<string key="NSContents">Album</string>
 														<reference key="NSSupport" ref="26"/>
-														<reference key="NSBackgroundColor" ref="852142592"/>
+														<reference key="NSBackgroundColor" ref="693989882"/>
 														<reference key="NSTextColor" ref="37235658"/>
 													</object>
-													<object class="NSTextFieldCell" key="NSDataCell" id="629587624">
+													<object class="NSTextFieldCell" key="NSDataCell" id="724686218">
 														<int key="NSCellFlags">337772096</int>
 														<int key="NSCellFlags2">2048</int>
 														<string key="NSContents">Text Cell</string>
@@ -1607,7 +1607,6 @@
 									<string key="NSFrame">{{1, 432}, {748, 15}}</string>
 									<reference key="NSSuperview" ref="760080475"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:60</string>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="760080475"/>
@@ -3512,9 +3511,9 @@
 						<reference key="object" ref="417685121"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="318171043"/>
-							<reference ref="936592536"/>
+							<reference ref="995316033"/>
 							<reference ref="768060049"/>
-							<reference ref="222464541"/>
+							<reference ref="747651296"/>
 						</array>
 						<reference key="parent" ref="760080475"/>
 					</object>
@@ -3576,29 +3575,29 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">630</int>
-						<reference key="object" ref="936592536"/>
+						<reference key="object" ref="995316033"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="643289890"/>
+							<reference ref="696183059"/>
 						</array>
 						<reference key="parent" ref="417685121"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">631</int>
-						<reference key="object" ref="643289890"/>
-						<reference key="parent" ref="936592536"/>
+						<reference key="object" ref="696183059"/>
+						<reference key="parent" ref="995316033"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">632</int>
-						<reference key="object" ref="222464541"/>
+						<reference key="object" ref="747651296"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="629587624"/>
+							<reference ref="724686218"/>
 						</array>
 						<reference key="parent" ref="417685121"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">633</int>
-						<reference key="object" ref="629587624"/>
-						<reference key="parent" ref="222464541"/>
+						<reference key="object" ref="724686218"/>
+						<reference key="parent" ref="747651296"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">618</int>
