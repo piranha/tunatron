@@ -21,7 +21,8 @@
 @synthesize currentSearch = _currentSearch;
 
 - (void)awakeFromNib {
-    [self.table setDoubleAction:@selector(tableDoubleAction:)];
+    [self.table setTarget:self];
+    [self.table setDoubleAction:@selector(handleTableDoubleAction:)];
 
     self.found = [NSMutableArray new];
     self.itunes = [SBApplication
@@ -90,7 +91,7 @@
     [self.table reloadData];
 }
 
-// search input delegation
+/// search input delegation
 
 - (void)controlTextDidChange:(NSNotification *)note {
     NSSearchField *field = [note object];
@@ -101,7 +102,7 @@
        textView:(NSTextView *)textView
 doCommandBySelector:(SEL)selector {
     if (selector == @selector(insertNewline:)) {
-        [self playCurrentTrack];
+        [self playSelectedTrack];
         return YES;
     }
 
@@ -137,15 +138,15 @@ doCommandBySelector:(SEL)selector {
     return NO;
 }
 
-// table delegation
+/// table delegation
 
-- (void)tableDoubleAction:(id)object {
+- (void)handleTableDoubleAction:(id)object {
     NSInteger idx = self.table.clickedRow;
     ScoredTrack *clicked = [self.found objectAtIndex:idx];
     [self play:clicked.track];
 }
 
-// table data source
+/// table data source
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return self.found.count;
@@ -164,7 +165,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     return [item.track stringForColumn:tableColumn];
 }
 
-// itunes communication
+/// itunes communication
 
 - (void)play:(Track *)track {
     iTunesSource *source = [[self.itunes sources] objectAtIndex:0];
@@ -177,7 +178,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [[tracks objectAtIndex:0] playOnce:NO];
 }
 
-- (void)playCurrentTrack {
+- (void)playSelectedTrack {
     NSUInteger idx = self.table.selectedRowIndexes.firstIndex;
     if (idx == NSNotFound)
         idx = 0;
@@ -191,7 +192,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     }
 }
 
-// utility
+/// utility
 
 - (NSString *)iTunesLibraryPath {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
