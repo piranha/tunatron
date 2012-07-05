@@ -18,6 +18,7 @@
 		9462924F15A1EE750067701C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9462924D15A1EE750067701C /* MainMenu.xib */; };
 		9462925715A1EF6A0067701C /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462925615A1EF6A0067701C /* SearchController.m */; };
 		9462925F15A32F700067701C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9462925E15A32F700067701C /* ScriptingBridge.framework */; };
+		94C29E9D15A5CD80003656CB /* NSBetterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C29E9C15A5CD80003656CB /* NSBetterTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +26,7 @@
 		9445241515A49F4D00B55A48 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		9445241C15A4E32900B55A48 /* NSString+Scoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Scoring.h"; sourceTree = "<group>"; };
 		9445241D15A4E32A00B55A48 /* NSString+Scoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Scoring.m"; sourceTree = "<group>"; };
-		9445241F15A4E8C700B55A48 /* ScoredTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ScoredTrack.h; sourceTree = "<group>"; };
+		9445241F15A4E8C700B55A48 /* ScoredTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoredTrack.h; sourceTree = "<group>"; };
 		9445242015A4E8C700B55A48 /* ScoredTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoredTrack.m; sourceTree = "<group>"; };
 		9462923415A1EE750067701C /* tunatron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tunatron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9462923815A1EE750067701C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -44,6 +45,8 @@
 		9462925615A1EF6A0067701C /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
 		9462925E15A32F700067701C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		9462926015A32FA20067701C /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
+		94C29E9B15A5CD80003656CB /* NSBetterTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBetterTableView.h; sourceTree = "<group>"; };
+		94C29E9C15A5CD80003656CB /* NSBetterTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBetterTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 				9445241D15A4E32A00B55A48 /* NSString+Scoring.m */,
 				9445241F15A4E8C700B55A48 /* ScoredTrack.h */,
 				9445242015A4E8C700B55A48 /* ScoredTrack.m */,
+				94C29E9B15A5CD80003656CB /* NSBetterTableView.h */,
+				94C29E9C15A5CD80003656CB /* NSBetterTableView.m */,
 			);
 			path = tunatron;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				9445241615A49F4D00B55A48 /* Track.m in Sources */,
 				9445241E15A4E32A00B55A48 /* NSString+Scoring.m in Sources */,
 				9445242115A4E8C700B55A48 /* ScoredTrack.m in Sources */,
+				94C29E9D15A5CD80003656CB /* NSBetterTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

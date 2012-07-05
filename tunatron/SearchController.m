@@ -21,8 +21,9 @@
 @synthesize currentSearch = _currentSearch;
 
 - (void)awakeFromNib {
-    [self.table setTarget:self];
-    [self.table setDoubleAction:@selector(handleTableDoubleAction:)];
+    self.table.target = self;
+    self.table.doubleAction = @selector(handleTableDoubleAction:);
+    self.table.enterAction = @selector(handleTableEnterAction:);
 
     self.found = [NSMutableArray new];
     self.itunes = [SBApplication
@@ -140,10 +141,14 @@ doCommandBySelector:(SEL)selector {
 
 /// table delegation
 
-- (void)handleTableDoubleAction:(id)object {
+- (void)handleTableDoubleAction:(id)event {
     NSInteger idx = self.table.clickedRow;
     ScoredTrack *clicked = [self.found objectAtIndex:idx];
     [self play:clicked.track];
+}
+
+- (void)handleTableEnterAction:(id)event {
+    [self playSelectedTrack];
 }
 
 /// table data source
@@ -184,10 +189,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         idx = 0;
     ScoredTrack *current = [self.found objectAtIndex:idx];
     if (current) {
-        NSLog(@"Starting %lu with score %f for %@",
-              idx,
-              current.score,
-              current.track.repr);
+//        NSLog(@"Starting %lu with score %f for %@",
+//              idx,
+//              current.score,
+//              current.track.repr);
         [self play:current.track];
     }
 }

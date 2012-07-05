@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "NSBetterTableView.h"
+
 #define ITUNESLIBRARY [@"~/Music/iTunes/iTunes Music Library.xml" stringByStandardizingPath]
 
 @class iTunesApplication;
@@ -26,6 +28,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 @property (copy) NSString *currentSearch;
 
 // UI elements
-@property (weak) IBOutlet NSTableView *table;
+@property (weak) IBOutlet NSBetterTableView *table;
 
 @end
