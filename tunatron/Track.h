@@ -19,6 +19,7 @@
 - (ScoredTrack *)scoredTrack:(NSString *)abbreviation;
 - (NSString *)stringForColumn:(NSTableColumn *)column;
 
+@property (copy) NSString *id;
 @property (copy) NSString *artist;
 @property (copy) NSString *year;
 @property (copy) NSString *album;

@@ -12,6 +12,7 @@
 
 @implementation Track
 
+@synthesize id = _id;
 @synthesize artist = _artist;
 @synthesize year = _year;
 @synthesize album = _album;
@@ -24,6 +25,8 @@
 
 + (id)withDictionary:(NSDictionary *)data {
     Track * new = [super new];
+
+    new.id = [data objectForKey:@"Persistent ID"];
     new.artist = [data objectForKey:@"Artist"];
     new.year = [data objectForKey:@"Year"];
     new.album = [data objectForKey:@"Album"];

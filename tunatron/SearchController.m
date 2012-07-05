@@ -21,6 +21,8 @@
 @synthesize currentSearch = _currentSearch;
 
 - (void)awakeFromNib {
+    [self.table setDoubleAction:@selector(tableDoubleAction:)];
+
     self.found = [NSMutableArray new];
     self.itunes = [SBApplication
                    applicationWithBundleIdentifier:@"com.apple.iTunes"];
@@ -44,10 +46,10 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
     dispatch_source_set_event_handler(self.source, ^{
-        NSDate *start = [NSDate date];
-        NSString *searchString = [NSString stringWithString:self.currentSearch];
-        NSMutableArray * found = [self innerSearchFor:searchString];
-        NSTimeInterval duration = fabs([start timeIntervalSinceNow]);
+//        NSDate *start = [NSDate date];
+//        NSString *searchString = [NSString stringWithString:self.currentSearch];
+        NSMutableArray * found = [self innerSearchFor:self.currentSearch];
+//        NSTimeInterval duration = fabs([start timeIntervalSinceNow]);
 //        NSLog(@"Search %@ has taken shit %f", searchString, duration);
 
         [self updateFound:found];
@@ -55,6 +57,8 @@
     dispatch_resume(self.source);
     [self searchFor:@""];
 }
+
+// Searching...
 
 - (void)searchFor:(NSString *)value {
     self.currentSearch = value;
@@ -93,6 +97,53 @@
     [self searchFor:[field stringValue]];
 }
 
+- (BOOL)control:(NSControl *)control
+       textView:(NSTextView *)textView
+doCommandBySelector:(SEL)selector {
+    if (selector == @selector(insertNewline:)) {
+        [self playCurrentTrack];
+        return YES;
+    }
+
+    if (selector == @selector(moveDown:) || selector == @selector(moveUp:)) {
+        NSIndexSet *indexes = self.table.selectedRowIndexes;
+
+        if (selector == @selector(moveUp:)) {
+            if (indexes.firstIndex == NSNotFound) {
+                return YES;
+            }
+            indexes = [NSIndexSet indexSetWithIndex:indexes.firstIndex - 1];
+        }
+        if (selector == @selector(moveDown:)) {
+            if (indexes.firstIndex == (self.found.count - 1)) {
+                return YES;
+            }
+            if (indexes.firstIndex == NSNotFound) {
+                indexes = [NSIndexSet indexSetWithIndex:0];
+            } else {
+                indexes = [NSIndexSet indexSetWithIndex:indexes.firstIndex + 1];
+            }
+        }
+
+        [self.table selectRowIndexes:indexes byExtendingSelection:NO];
+        [self.table scrollRowToVisible:indexes.firstIndex];
+        return YES;
+    }
+
+    if (selector == @selector(moveUp:)) {
+        return YES;
+    }
+
+    return NO;
+}
+
+// table delegation
+
+- (void)tableDoubleAction:(id)object {
+    NSInteger idx = self.table.clickedRow;
+    ScoredTrack *clicked = [self.found objectAtIndex:idx];
+    [self play:clicked.track];
+}
 
 // table data source
 
@@ -111,6 +162,33 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     }
 
     return [item.track stringForColumn:tableColumn];
+}
+
+// itunes communication
+
+- (void)play:(Track *)track {
+    iTunesSource *source = [[self.itunes sources] objectAtIndex:0];
+    iTunesPlaylist *pl = [[source libraryPlaylists] objectAtIndex:0];
+    NSPredicate *predicate = [NSPredicate
+                              predicateWithFormat:@"persistentID == %@",
+                              track.id];
+    NSArray *tracks = [[pl tracks] filteredArrayUsingPredicate:predicate];
+
+    [[tracks objectAtIndex:0] playOnce:NO];
+}
+
+- (void)playCurrentTrack {
+    NSUInteger idx = self.table.selectedRowIndexes.firstIndex;
+    if (idx == NSNotFound)
+        idx = 0;
+    ScoredTrack *current = [self.found objectAtIndex:idx];
+    if (current) {
+        NSLog(@"Starting %lu with score %f for %@",
+              idx,
+              current.score,
+              current.track.repr);
+        [self play:current.track];
+    }
 }
 
 // utility
