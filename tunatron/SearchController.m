@@ -43,18 +43,36 @@
 }
 
 - (void)searchFor:(NSString *)value {
-    [self.found removeAllObjects];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
+                   ^{
+                       [self innerSearchFor:value];
+                   });
+}
+
+- (void)innerSearchFor:(NSString *)value {
     value = [value lowercaseString];
+    NSMutableArray *found = [NSMutableArray new];
 
     [self.tracks
      enumerateObjectsUsingBlock:^(Track *track, NSUInteger idx, BOOL *stop) {
          ScoredTrack * scored = [track scoredTrack:value];
          if (scored) {
-             [self.found addObject:scored];
+             [found addObject:scored];
          }
     }];
     
-    [self.found sortUsingSelector:@selector(score)];
+    [found sortUsingSelector:@selector(score)];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateFound:found];
+    });
+}
+
+
+- (void)updateFound:(NSMutableArray *)replacement {
+    NSRange allFound = NSMakeRange(0, self.found.count);
+    [self.found 
+     replaceObjectsInRange:allFound 
+     withObjectsFromArray:replacement];
     [self.table reloadData];
 }
 
