@@ -17,6 +17,8 @@
 @synthesize found = _found;
 @synthesize tracks = _tracks;
 @synthesize itunes = _itunes;
+@synthesize source = _source;
+@synthesize currentSearch = _currentSearch;
 
 - (void)awakeFromNib {
     self.found = [NSMutableArray new];
@@ -39,17 +41,27 @@
          return [t1 compare:t2];
     }];
 
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
+    dispatch_source_set_event_handler(self.source, ^{
+        NSDate *start = [NSDate date];
+        NSString *searchString = [NSString stringWithString:self.currentSearch];
+        NSMutableArray * found = [self innerSearchFor:searchString];
+        NSTimeInterval duration = fabs([start timeIntervalSinceNow]);
+//        NSLog(@"Search %@ has taken shit %f", searchString, duration);
+
+        [self updateFound:found];
+    });
+    dispatch_resume(self.source);
     [self searchFor:@""];
 }
 
 - (void)searchFor:(NSString *)value {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
-                   ^{
-                       [self innerSearchFor:value];
-                   });
+    self.currentSearch = value;
+    dispatch_source_merge_data(self.source, 1);
 }
 
-- (void)innerSearchFor:(NSString *)value {
+- (NSMutableArray *)innerSearchFor:(NSString *)value {
     value = [value lowercaseString];
     NSMutableArray *found = [NSMutableArray new];
 
@@ -60,18 +72,16 @@
              [found addObject:scored];
          }
     }];
-    
+
     [found sortUsingSelector:@selector(score)];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateFound:found];
-    });
+    return found;
 }
 
 
 - (void)updateFound:(NSMutableArray *)replacement {
     NSRange allFound = NSMakeRange(0, self.found.count);
-    [self.found 
-     replaceObjectsInRange:allFound 
+    [self.found
+     replaceObjectsInRange:allFound
      withObjectsFromArray:replacement];
     [self.table reloadData];
 }

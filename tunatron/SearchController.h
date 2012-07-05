@@ -21,6 +21,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 @property (strong) NSMutableArray *found;
 @property (strong) NSMutableArray *tracks;
 @property (strong) iTunesApplication *itunes;
+@property dispatch_source_t source;
+
+@property (copy) NSString *currentSearch;
 
 // UI elements
 @property (weak) IBOutlet NSTableView *table;
