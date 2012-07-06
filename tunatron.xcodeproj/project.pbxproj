@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		943264E315A7246B00CCA026 /* fish-glyph.icns in Resources */ = {isa = PBXBuildFile; fileRef = 943264E215A7246B00CCA026 /* fish-glyph.icns */; };
 		9445241615A49F4D00B55A48 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445241515A49F4D00B55A48 /* Track.m */; };
 		9445241E15A4E32A00B55A48 /* NSString+Scoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445241D15A4E32A00B55A48 /* NSString+Scoring.m */; };
 		9445242115A4E8C700B55A48 /* ScoredTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445242015A4E8C700B55A48 /* ScoredTrack.m */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		943264E215A7246B00CCA026 /* fish-glyph.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "fish-glyph.icns"; sourceTree = "<group>"; };
 		9445241415A49F4D00B55A48 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		9445241515A49F4D00B55A48 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		9445241C15A4E32900B55A48 /* NSString+Scoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Scoring.h"; sourceTree = "<group>"; };
@@ -62,10 +64,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		943264E115A7246B00CCA026 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				943264E215A7246B00CCA026 /* fish-glyph.icns */,
+			);
+			name = Resources;
+			path = tunatron/Resources;
+			sourceTree = "<group>";
+		};
 		9462922915A1EE750067701C = {
 			isa = PBXGroup;
 			children = (
 				9462925E15A32F700067701C /* ScriptingBridge.framework */,
+				943264E115A7246B00CCA026 /* Resources */,
 				9462923E15A1EE750067701C /* tunatron */,
 				9462923715A1EE750067701C /* Frameworks */,
 				9462923515A1EE750067701C /* Products */,
@@ -186,6 +198,7 @@
 				9462924315A1EE750067701C /* InfoPlist.strings in Resources */,
 				9462924915A1EE750067701C /* Credits.rtf in Resources */,
 				9462924F15A1EE750067701C /* MainMenu.xib in Resources */,
+				943264E315A7246B00CCA026 /* fish-glyph.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
