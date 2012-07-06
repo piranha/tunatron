@@ -44,11 +44,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
     dispatch_source_set_event_handler(self.source, ^{
-//        NSDate *start = [NSDate date];
-//        NSString *searchString = [NSString stringWithString:self.currentSearch];
         NSMutableArray * found = [self innerSearchFor:self.currentSearch];
-//        NSTimeInterval duration = fabs([start timeIntervalSinceNow]);
-//        NSLog(@"Search %@ has taken shit %f", searchString, duration);
 
         [self updateFound:found];
     });
