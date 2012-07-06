@@ -29,6 +29,7 @@
     self.itunes = [SBApplication
                    applicationWithBundleIdentifier:@"com.apple.iTunes"];
 
+
     NSString * libraryPath = [self iTunesLibraryPath];
     NSDictionary * tracks = [[NSDictionary
                               dictionaryWithContentsOfFile:libraryPath]
@@ -39,11 +40,6 @@
         [self.tracks
          addObject:[Track withDictionary:[tracks objectForKey:key]]];
     }
-
-    [self.tracks
-     sortUsingComparator:^NSComparisonResult(Track *t1, Track *t2) {
-         return [t1 compare:t2];
-    }];
 
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
