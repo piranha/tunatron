@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		943264E315A7246B00CCA026 /* fish-glyph.icns in Resources */ = {isa = PBXBuildFile; fileRef = 943264E215A7246B00CCA026 /* fish-glyph.icns */; };
+		943264E915A7280A00CCA026 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943264E815A7280A00CCA026 /* PreferencesController.m */; };
+		943264EB15A7282000CCA026 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943264EA15A7282000CCA026 /* Preferences.xib */; };
+		9432650015A728F600CCA026 /* ShortcutRecorder.strings in Resources */ = {isa = PBXBuildFile; fileRef = 943264FF15A728F600CCA026 /* ShortcutRecorder.strings */; };
+		9432650215A7297400CCA026 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9432650115A7297400CCA026 /* Carbon.framework */; };
+		9432651115A733F000CCA026 /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9432650815A733F000CCA026 /* SRCommon.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9432651215A733F000CCA026 /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9432650A15A733F000CCA026 /* SRKeyCodeTransformer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9432651315A733F000CCA026 /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9432650C15A733F000CCA026 /* SRRecorderCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9432651415A733F000CCA026 /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9432650E15A733F000CCA026 /* SRRecorderControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9432651515A733F000CCA026 /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9432651015A733F000CCA026 /* SRValidator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9445241615A49F4D00B55A48 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445241515A49F4D00B55A48 /* Track.m */; };
 		9445241E15A4E32A00B55A48 /* NSString+Scoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445241D15A4E32A00B55A48 /* NSString+Scoring.m */; };
 		9445242115A4E8C700B55A48 /* ScoredTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445242015A4E8C700B55A48 /* ScoredTrack.m */; };
@@ -19,11 +28,29 @@
 		9462924F15A1EE750067701C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9462924D15A1EE750067701C /* MainMenu.xib */; };
 		9462925715A1EF6A0067701C /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9462925615A1EF6A0067701C /* SearchController.m */; };
 		9462925F15A32F700067701C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9462925E15A32F700067701C /* ScriptingBridge.framework */; };
+		94BF47CD15A82512004A4593 /* fish-glyph-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF47CC15A82512004A4593 /* fish-glyph-24.png */; };
+		94BF47D615A827E5004A4593 /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BF47D515A827E5004A4593 /* StatusItemView.m */; };
 		94C29E9D15A5CD80003656CB /* NSBetterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C29E9C15A5CD80003656CB /* NSBetterTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		943264E215A7246B00CCA026 /* fish-glyph.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "fish-glyph.icns"; sourceTree = "<group>"; };
+		943264E715A7280A00CCA026 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		943264E815A7280A00CCA026 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		943264EA15A7282000CCA026 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		943264ED15A728C700CCA026 /* ShortcutRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutRecorder.h; sourceTree = "<group>"; };
+		943264FF15A728F600CCA026 /* ShortcutRecorder.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = ShortcutRecorder.strings; sourceTree = "<group>"; };
+		9432650115A7297400CCA026 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		9432650715A733F000CCA026 /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCommon.h; sourceTree = "<group>"; };
+		9432650815A733F000CCA026 /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCommon.m; sourceTree = "<group>"; };
+		9432650915A733F000CCA026 /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRKeyCodeTransformer.h; sourceTree = "<group>"; };
+		9432650A15A733F000CCA026 /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRKeyCodeTransformer.m; sourceTree = "<group>"; };
+		9432650B15A733F000CCA026 /* SRRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderCell.h; sourceTree = "<group>"; };
+		9432650C15A733F000CCA026 /* SRRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderCell.m; sourceTree = "<group>"; };
+		9432650D15A733F000CCA026 /* SRRecorderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderControl.h; sourceTree = "<group>"; };
+		9432650E15A733F000CCA026 /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControl.m; sourceTree = "<group>"; };
+		9432650F15A733F000CCA026 /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRValidator.h; sourceTree = "<group>"; };
+		9432651015A733F000CCA026 /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRValidator.m; sourceTree = "<group>"; };
 		9445241415A49F4D00B55A48 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		9445241515A49F4D00B55A48 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		9445241C15A4E32900B55A48 /* NSString+Scoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Scoring.h"; sourceTree = "<group>"; };
@@ -47,6 +74,9 @@
 		9462925615A1EF6A0067701C /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
 		9462925E15A32F700067701C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		9462926015A32FA20067701C /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
+		94BF47CC15A82512004A4593 /* fish-glyph-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fish-glyph-24.png"; sourceTree = "<group>"; };
+		94BF47D415A827E5004A4593 /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
+		94BF47D515A827E5004A4593 /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
 		94C29E9B15A5CD80003656CB /* NSBetterTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBetterTableView.h; sourceTree = "<group>"; };
 		94C29E9C15A5CD80003656CB /* NSBetterTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBetterTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9432650215A7297400CCA026 /* Carbon.framework in Frameworks */,
 				9462925F15A32F700067701C /* ScriptingBridge.framework in Frameworks */,
 				9462923915A1EE750067701C /* Cocoa.framework in Frameworks */,
 			);
@@ -67,15 +98,65 @@
 		943264E115A7246B00CCA026 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94BF47CC15A82512004A4593 /* fish-glyph-24.png */,
+				943264FF15A728F600CCA026 /* ShortcutRecorder.strings */,
 				943264E215A7246B00CCA026 /* fish-glyph.icns */,
 			);
 			name = Resources;
 			path = tunatron/Resources;
 			sourceTree = "<group>";
 		};
+		943264E515A7279D00CCA026 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				9462926015A32FA20067701C /* iTunes.h */,
+				9462925515A1EF6A0067701C /* SearchController.h */,
+				9462925615A1EF6A0067701C /* SearchController.m */,
+				9445241415A49F4D00B55A48 /* Track.h */,
+				9445241515A49F4D00B55A48 /* Track.m */,
+				9445241C15A4E32900B55A48 /* NSString+Scoring.h */,
+				9445241D15A4E32A00B55A48 /* NSString+Scoring.m */,
+				9445241F15A4E8C700B55A48 /* ScoredTrack.h */,
+				9445242015A4E8C700B55A48 /* ScoredTrack.m */,
+				94C29E9B15A5CD80003656CB /* NSBetterTableView.h */,
+				94C29E9C15A5CD80003656CB /* NSBetterTableView.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		943264E615A727A700CCA026 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				943264EC15A728C700CCA026 /* ShortcutRecorder */,
+				943264E715A7280A00CCA026 /* PreferencesController.h */,
+				943264E815A7280A00CCA026 /* PreferencesController.m */,
+				943264EA15A7282000CCA026 /* Preferences.xib */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		943264EC15A728C700CCA026 /* ShortcutRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				9432650715A733F000CCA026 /* SRCommon.h */,
+				9432650815A733F000CCA026 /* SRCommon.m */,
+				9432650915A733F000CCA026 /* SRKeyCodeTransformer.h */,
+				9432650A15A733F000CCA026 /* SRKeyCodeTransformer.m */,
+				9432650B15A733F000CCA026 /* SRRecorderCell.h */,
+				9432650C15A733F000CCA026 /* SRRecorderCell.m */,
+				9432650D15A733F000CCA026 /* SRRecorderControl.h */,
+				9432650E15A733F000CCA026 /* SRRecorderControl.m */,
+				9432650F15A733F000CCA026 /* SRValidator.h */,
+				9432651015A733F000CCA026 /* SRValidator.m */,
+				943264ED15A728C700CCA026 /* ShortcutRecorder.h */,
+			);
+			path = ShortcutRecorder;
+			sourceTree = "<group>";
+		};
 		9462922915A1EE750067701C = {
 			isa = PBXGroup;
 			children = (
+				9432650115A7297400CCA026 /* Carbon.framework */,
 				9462925E15A32F700067701C /* ScriptingBridge.framework */,
 				943264E115A7246B00CCA026 /* Resources */,
 				9462923E15A1EE750067701C /* tunatron */,
@@ -115,20 +196,9 @@
 			isa = PBXGroup;
 			children = (
 				9462923F15A1EE750067701C /* Supporting Files */,
-				9462926015A32FA20067701C /* iTunes.h */,
-				9462924A15A1EE750067701C /* AppDelegate.h */,
-				9462924B15A1EE750067701C /* AppDelegate.m */,
-				9462924D15A1EE750067701C /* MainMenu.xib */,
-				9462925515A1EF6A0067701C /* SearchController.h */,
-				9462925615A1EF6A0067701C /* SearchController.m */,
-				9445241415A49F4D00B55A48 /* Track.h */,
-				9445241515A49F4D00B55A48 /* Track.m */,
-				9445241C15A4E32900B55A48 /* NSString+Scoring.h */,
-				9445241D15A4E32A00B55A48 /* NSString+Scoring.m */,
-				9445241F15A4E8C700B55A48 /* ScoredTrack.h */,
-				9445242015A4E8C700B55A48 /* ScoredTrack.m */,
-				94C29E9B15A5CD80003656CB /* NSBetterTableView.h */,
-				94C29E9C15A5CD80003656CB /* NSBetterTableView.m */,
+				943264E515A7279D00CCA026 /* Search */,
+				943264E615A727A700CCA026 /* Preferences */,
+				94BF47D315A82778004A4593 /* UI */,
 			);
 			path = tunatron;
 			sourceTree = "<group>";
@@ -143,6 +213,18 @@
 				9462924715A1EE750067701C /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94BF47D315A82778004A4593 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9462924A15A1EE750067701C /* AppDelegate.h */,
+				9462924B15A1EE750067701C /* AppDelegate.m */,
+				9462924D15A1EE750067701C /* MainMenu.xib */,
+				94BF47D415A827E5004A4593 /* StatusItemView.h */,
+				94BF47D515A827E5004A4593 /* StatusItemView.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +281,9 @@
 				9462924915A1EE750067701C /* Credits.rtf in Resources */,
 				9462924F15A1EE750067701C /* MainMenu.xib in Resources */,
 				943264E315A7246B00CCA026 /* fish-glyph.icns in Resources */,
+				943264EB15A7282000CCA026 /* Preferences.xib in Resources */,
+				9432650015A728F600CCA026 /* ShortcutRecorder.strings in Resources */,
+				94BF47CD15A82512004A4593 /* fish-glyph-24.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +301,13 @@
 				9445241E15A4E32A00B55A48 /* NSString+Scoring.m in Sources */,
 				9445242115A4E8C700B55A48 /* ScoredTrack.m in Sources */,
 				94C29E9D15A5CD80003656CB /* NSBetterTableView.m in Sources */,
+				943264E915A7280A00CCA026 /* PreferencesController.m in Sources */,
+				9432651115A733F000CCA026 /* SRCommon.m in Sources */,
+				9432651215A733F000CCA026 /* SRKeyCodeTransformer.m in Sources */,
+				9432651315A733F000CCA026 /* SRRecorderCell.m in Sources */,
+				9432651415A733F000CCA026 /* SRRecorderControl.m in Sources */,
+				9432651515A733F000CCA026 /* SRValidator.m in Sources */,
+				94BF47D615A827E5004A4593 /* StatusItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
