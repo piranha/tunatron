@@ -52,7 +52,8 @@
     [self searchFor:@""];
 }
 
-// Searching...
+
+#pragma mark - Searching
 
 - (void)searchFor:(NSString *)value {
     self.currentSearch = value;
@@ -84,7 +85,8 @@
     [self.table reloadData];
 }
 
-/// search input delegation
+
+#pragma mark - Search Input delegation
 
 - (void)controlTextDidChange:(NSNotification *)note {
     NSSearchField *field = [note object];
@@ -131,7 +133,8 @@ doCommandBySelector:(SEL)selector {
     return NO;
 }
 
-/// table delegation
+
+#pragma mark - Table Delegation
 
 - (void)handleTableDoubleAction:(id)event {
     NSInteger idx = self.table.clickedRow;
@@ -143,7 +146,8 @@ doCommandBySelector:(SEL)selector {
     [self playSelectedTrack];
 }
 
-/// table data source
+
+# pragma mark - Table Data Source
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return self.found.count;
@@ -162,7 +166,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     return [item.track stringForColumn:tableColumn];
 }
 
-/// itunes communication
+
+#pragma mark - iTunes Communication
 
 - (void)play:(Track *)track {
     iTunesSource *source = [[self.itunes sources] objectAtIndex:0];
@@ -189,7 +194,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     }
 }
 
-/// utility
+
+#pragma mark - Utility
 
 - (NSString *)iTunesLibraryPath {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
