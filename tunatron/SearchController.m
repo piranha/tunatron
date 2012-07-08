@@ -29,19 +29,9 @@
     self.itunes = [SBApplication
                    applicationWithBundleIdentifier:@"com.apple.iTunes"];
 
-
-    NSString * libraryPath = [self iTunesLibraryPath];
-    NSDictionary * tracks = [[NSDictionary
-                              dictionaryWithContentsOfFile:libraryPath]
-                             objectForKey:@"Tracks"];
-
-    self.tracks = [NSMutableArray arrayWithCapacity:tracks.count];
-    for (NSString * key in [tracks keyEnumerator]) {
-        [self.tracks
-         addObject:[Track withDictionary:[tracks objectForKey:key]]];
-    }
-
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    // setup 'search is done' queue and event handler
     self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
     dispatch_source_set_event_handler(self.source, ^{
         NSMutableArray * found = [self innerSearchFor:self.currentSearch];
@@ -49,7 +39,11 @@
         [self updateFound:found];
     });
     dispatch_resume(self.source);
-    [self searchFor:@""];
+
+    // load library asynchronously so application start is not that slow
+    dispatch_async(queue, ^(void) {
+        [self readLibrary];
+    });
 }
 
 
@@ -196,6 +190,21 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 
 #pragma mark - Utility
+
+- (void)readLibrary {
+    NSString * libraryPath = [self iTunesLibraryPath];
+    NSDictionary * tracks = [[NSDictionary
+                              dictionaryWithContentsOfFile:libraryPath]
+                             objectForKey:@"Tracks"];
+
+    self.tracks = [NSMutableArray arrayWithCapacity:tracks.count];
+    for (NSString * key in [tracks keyEnumerator]) {
+        [self.tracks
+         addObject:[Track withDictionary:[tracks objectForKey:key]]];
+    }
+
+    [self searchFor:self.currentSearch];
+}
 
 - (NSString *)iTunesLibraryPath {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

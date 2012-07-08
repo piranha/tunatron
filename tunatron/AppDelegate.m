@@ -18,6 +18,11 @@
 @synthesize preferencesController = _preferencesController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    self.statusItemView = [StatusItemView withMenu:self.statusMenu];
+    self.statusItemView.image = [NSImage imageNamed:@"fish-glyph-24"];
+    self.statusItemView.target = self;
+    self.statusItemView.action = @selector(toggleWindow);
+
     self.window.collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces;
     self.window.isVisible = NO;
 
@@ -26,13 +31,7 @@
      handler:^(void) {
          [self toggleWindow];
      }];
-}
 
-- (void)awakeFromNib {
-    self.statusItemView = [StatusItemView withMenu:self.statusMenu];
-    self.statusItemView.image = [NSImage imageNamed:@"fish-glyph-24"];
-    self.statusItemView.target = self;
-    self.statusItemView.action = @selector(toggleWindow);
 }
 
 - (void)activateWindow {

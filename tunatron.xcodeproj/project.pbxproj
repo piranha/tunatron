@@ -111,8 +111,6 @@
 				9445241D15A4E32A00B55A48 /* NSString+Scoring.m */,
 				9445241F15A4E8C700B55A48 /* ScoredTrack.h */,
 				9445242015A4E8C700B55A48 /* ScoredTrack.m */,
-				94C29E9B15A5CD80003656CB /* NSBetterTableView.h */,
-				94C29E9C15A5CD80003656CB /* NSBetterTableView.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -120,10 +118,10 @@
 		943264E615A727A700CCA026 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				943264EA15A7282000CCA026 /* Preferences.xib */,
 				94E8D9E915A9BCCA006EDD7A /* MASShortcut */,
 				943264E715A7280A00CCA026 /* PreferencesController.h */,
 				943264E815A7280A00CCA026 /* PreferencesController.m */,
-				943264EA15A7282000CCA026 /* Preferences.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -193,11 +191,13 @@
 		94BF47D315A82778004A4593 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9462924D15A1EE750067701C /* MainMenu.xib */,
 				9462924A15A1EE750067701C /* AppDelegate.h */,
 				9462924B15A1EE750067701C /* AppDelegate.m */,
-				9462924D15A1EE750067701C /* MainMenu.xib */,
 				94BF47D415A827E5004A4593 /* StatusItemView.h */,
 				94BF47D515A827E5004A4593 /* StatusItemView.m */,
+				94C29E9B15A5CD80003656CB /* NSBetterTableView.h */,
+				94C29E9C15A5CD80003656CB /* NSBetterTableView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
