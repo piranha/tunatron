@@ -7,10 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "ShortcutRecorder/SRRecorderControl.h"
 
 @interface PreferencesController : NSWindowController
-
-@property IBOutlet SRRecorderControl *shortcutRecorder;
 
 @end

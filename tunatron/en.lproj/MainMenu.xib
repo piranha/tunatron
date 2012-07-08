@@ -1400,7 +1400,7 @@
 											<string key="NSFrameSize">{748, 430}</string>
 											<reference key="NSSuperview" ref="570772307"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="601921253"/>
+											<reference key="NSNextKeyView" ref="214380998"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTableHeaderView" key="NSHeaderView" id="422519297">
@@ -1628,7 +1628,7 @@
 							<string key="NSFrame">{{0, -1}, {750, 448}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="214380998"/>
+							<reference key="NSNextKeyView" ref="570772307"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133682</int>
 							<reference key="NSVScroller" ref="601921253"/>
@@ -2378,11 +2378,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">statusItem</string>
+						<string key="label">statusMenu</string>
 						<reference key="source" ref="976324537"/>
 						<reference key="destination" ref="1064173863"/>
 					</object>
-					<int key="connectionID">657</int>
+					<int key="connectionID">658</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3891,7 +3891,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">657</int>
+			<int key="maxID">658</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

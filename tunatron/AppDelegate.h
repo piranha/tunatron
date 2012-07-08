@@ -11,11 +11,11 @@
 
 @class StatusItemView;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSMenu *statusMenu;
-@property (nonatomic, strong, retain) StatusItemView *statusItemView;
+@property (nonatomic, strong) StatusItemView *statusItemView;
 @property (retain) PreferencesController *preferencesController;
 
 - (IBAction)showPreferences:(id)sender;
