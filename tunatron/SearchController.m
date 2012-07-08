@@ -80,6 +80,62 @@
 }
 
 
+
+#pragma mark - iTunes Communication
+
+- (void)play:(Track *)track {
+    iTunesSource *source = [[self.itunes sources] objectAtIndex:0];
+    // Second playlist is 'Music' one, which is sorted and all that stuff
+    iTunesPlaylist *pl = [[source playlists] objectAtIndex:1];
+    NSPredicate *predicate = [NSPredicate
+                              predicateWithFormat:@"persistentID == %@",
+                              track.id];
+    NSArray *tracks = [[pl tracks] filteredArrayUsingPredicate:predicate];
+
+    [[tracks objectAtIndex:0] playOnce:NO];
+}
+
+- (void)playSelectedTrack {
+    NSUInteger idx = self.table.selectedRowIndexes.firstIndex;
+    if (idx == NSNotFound)
+        idx = 0;
+    ScoredTrack *current = [self.found objectAtIndex:idx];
+    if (current) {
+        //        NSLog(@"Starting %lu with score %f for %@",
+        //              idx,
+        //              current.score,
+        //              current.track.repr);
+        [self play:current.track];
+    }
+}
+
+- (int)currentTrackIndex {
+    if (self.itunes.playerState == iTunesEPlSStopped)
+        return 0;
+    NSString * id = self.itunes.currentTrack.persistentID;
+    return [self.found
+            indexOfObjectPassingTest:^BOOL(ScoredTrack *st, NSUInteger idx, BOOL *stop) {
+                return [st.track.id isEqualToString:id];
+            }];
+}
+
+
+#pragma mark - Window Delegation
+
+- (void)bringCurrentTrackIntoVisibility {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        int idx = [self currentTrackIndex];
+        [self.table scrollRowToVisible:idx];
+        self.table.selectedRow = idx;
+    });
+}
+
+- (void)windowDidBecomeKey:(NSNotification *)notification {
+    [self bringCurrentTrackIntoVisibility];
+}
+
+
 #pragma mark - Search Input delegation
 
 - (void)controlTextDidChange:(NSNotification *)note {
@@ -96,27 +152,27 @@ doCommandBySelector:(SEL)selector {
     }
 
     if (selector == @selector(moveDown:) || selector == @selector(moveUp:)) {
-        NSIndexSet *indexes = self.table.selectedRowIndexes;
+        NSInteger index = self.table.selectedRow;
 
         if (selector == @selector(moveUp:)) {
-            if (indexes.firstIndex == NSNotFound) {
+            if (index == NSNotFound) {
                 return YES;
             }
-            indexes = [NSIndexSet indexSetWithIndex:indexes.firstIndex - 1];
+            index = index - 1;
         }
-        if (selector == @selector(moveDown:)) {
-            if (indexes.firstIndex == (self.found.count - 1)) {
+        else if (selector == @selector(moveDown:)) {
+            if (index == (self.found.count - 1)) {
                 return YES;
             }
-            if (indexes.firstIndex == NSNotFound) {
-                indexes = [NSIndexSet indexSetWithIndex:0];
+            if (index == NSNotFound) {
+                index = 0;
             } else {
-                indexes = [NSIndexSet indexSetWithIndex:indexes.firstIndex + 1];
+                index++;
             }
         }
 
-        [self.table selectRowIndexes:indexes byExtendingSelection:NO];
-        [self.table scrollRowToVisible:indexes.firstIndex];
+        self.table.selectedRow = index;
+        [self.table scrollRowToVisible:index];
         return YES;
     }
 
@@ -161,35 +217,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 }
 
 
-#pragma mark - iTunes Communication
-
-- (void)play:(Track *)track {
-    iTunesSource *source = [[self.itunes sources] objectAtIndex:0];
-    // Second playlist is 'Music' one, which is sorted and all that stuff
-    iTunesPlaylist *pl = [[source playlists] objectAtIndex:1];
-    NSPredicate *predicate = [NSPredicate
-                              predicateWithFormat:@"persistentID == %@",
-                              track.id];
-    NSArray *tracks = [[pl tracks] filteredArrayUsingPredicate:predicate];
-
-    [[tracks objectAtIndex:0] playOnce:NO];
-}
-
-- (void)playSelectedTrack {
-    NSUInteger idx = self.table.selectedRowIndexes.firstIndex;
-    if (idx == NSNotFound)
-        idx = 0;
-    ScoredTrack *current = [self.found objectAtIndex:idx];
-    if (current) {
-//        NSLog(@"Starting %lu with score %f for %@",
-//              idx,
-//              current.score,
-//              current.track.repr);
-        [self play:current.track];
-    }
-}
-
-
 #pragma mark - Utility
 
 - (void)readLibrary {
@@ -204,7 +231,13 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
          addObject:[Track withDictionary:[tracks objectForKey:key]]];
     }
 
+    [self.tracks
+     sortUsingComparator:^NSComparisonResult(Track *t1, Track *t2) {
+         return [t2 compare:t1];
+     }];
+
     [self searchFor:self.currentSearch];
+    [self bringCurrentTrackIntoVisibility];
 }
 
 - (NSString *)iTunesLibraryPath {

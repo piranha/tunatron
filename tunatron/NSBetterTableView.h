@@ -11,5 +11,6 @@
 @interface NSBetterTableView : NSTableView
 
 @property SEL enterAction;
+@property NSInteger selectedRow;
 
 @end

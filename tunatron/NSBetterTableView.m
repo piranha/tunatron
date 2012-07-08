@@ -27,4 +27,14 @@
     [super keyDown:event];
 }
 
+- (NSInteger)selectedRow {
+    NSIndexSet *indexes = self.selectedRowIndexes;
+    return indexes.firstIndex;
+}
+
+- (void)setSelectedRow:(NSInteger)index {
+    NSIndexSet *indexes = [NSIndexSet indexSetWithIndex:index];
+    [self selectRowIndexes:indexes byExtendingSelection:NO];
+}
+
 @end

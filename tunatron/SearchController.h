@@ -13,7 +13,7 @@
 
 @class iTunesApplication;
 
-@interface SearchController : NSObject <NSTableViewDataSource, NSTableViewDelegate>
+@interface SearchController : NSObject <NSTableViewDataSource, NSTableViewDelegate, NSWindowDelegate>
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView;
 - (id)tableView:(NSTableView *)tableView

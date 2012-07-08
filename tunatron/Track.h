@@ -24,7 +24,7 @@
 @property (copy) NSString *year;
 @property (copy) NSString *album;
 @property (copy) NSString *cd;
-@property (copy) NSString *number;
+@property int number;
 @property (copy) NSString *name;
 
 @property (copy) NSString *repr;

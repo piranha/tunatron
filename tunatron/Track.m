@@ -31,7 +31,7 @@
     new.year = [data objectForKey:@"Year"];
     new.album = [data objectForKey:@"Album"];
     new.cd = [data objectForKey:@"Disc Number"];
-    new.number = [data objectForKey:@"Track Number"];
+    new.number = [[data objectForKey:@"Track Number"] intValue];
     new.name = [data objectForKey:@"Name"];
 
     new.repr = [new representation];
@@ -41,7 +41,7 @@
 }
 
 - (NSString *)representation {
-    return [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@",
+    return [NSString stringWithFormat:@"%@ %@ %@ %@ %02d %@",
             self.artist,
             self.year,
             self.album,
