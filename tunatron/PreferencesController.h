@@ -7,7 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MASShortcut/MASShortcutView+UserDefaults.h"
+
+FOUNDATION_EXPORT NSString * const GLOBAL_SHORTCUT;
 
 @interface PreferencesController : NSWindowController
+
+@property (weak) IBOutlet MASShortcutView *shortcutView;
 
 @end

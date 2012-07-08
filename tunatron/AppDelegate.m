@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "StatusItemView.h"
+#import "MASShortcut/MASShortcut+UserDefaults.h"
 
 @implementation AppDelegate
 
@@ -17,7 +18,14 @@
 @synthesize preferencesController = _preferencesController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [self toggleWindow];
+    self.window.collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces;
+    self.window.isVisible = NO;
+
+    [MASShortcut
+     registerGlobalShortcutWithUserDefaultsKey:GLOBAL_SHORTCUT
+     handler:^(void) {
+         [self toggleWindow];
+     }];
 }
 
 - (void)awakeFromNib {
@@ -27,17 +35,35 @@
     self.statusItemView.action = @selector(toggleWindow);
 }
 
+- (void)activateWindow {
+    self.window.isVisible = YES;
+    self.window.orderedIndex = 0;
+    [NSApp activateIgnoringOtherApps:YES];
+}
+
 - (void)toggleWindow {
-    self.window.isVisible = !self.window.isVisible;
+    if (self.window.isKeyWindow) {
+        self.window.isVisible = NO;
+    } else {
+        [self activateWindow];
+    }
 }
 
 - (void)showPreferences:(id)sender {
     if (!self.preferencesController) {
-        self.preferencesController = [[PreferencesController alloc] 
+        self.preferencesController = [[PreferencesController alloc]
                                       initWithWindowNibName:@"Preferences"];
     }
-    
+
     [self.preferencesController showWindow:self];
+}
+
+- (IBAction)showSearch:(id)sender {
+    [self activateWindow];
+}
+
+- (IBAction)quit:(id)sender {
+    [NSApp terminate:nil];
 }
 
 @end

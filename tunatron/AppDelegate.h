@@ -19,5 +19,7 @@
 @property (retain) PreferencesController *preferencesController;
 
 - (IBAction)showPreferences:(id)sender;
+- (IBAction)showSearch:(id)sender;
+- (IBAction)quit:(id)sender;
 
 @end
