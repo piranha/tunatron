@@ -165,7 +165,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 - (void)play:(Track *)track {
     iTunesSource *source = [[self.itunes sources] objectAtIndex:0];
-    iTunesPlaylist *pl = [[source libraryPlaylists] objectAtIndex:0];
+    // Second playlist is 'Music' one, which is sorted and all that stuff
+    iTunesPlaylist *pl = [[source playlists] objectAtIndex:1];
     NSPredicate *predicate = [NSPredicate
                               predicateWithFormat:@"persistentID == %@",
                               track.id];
