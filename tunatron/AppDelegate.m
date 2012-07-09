@@ -42,7 +42,7 @@
 
 - (void)toggleWindow {
     if (self.window.isKeyWindow) {
-        self.window.isVisible = NO;
+        [NSApp hide:self];
     } else {
         [self activateWindow];
     }
