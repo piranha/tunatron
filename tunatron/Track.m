@@ -14,6 +14,7 @@
 
 @synthesize id = _id;
 @synthesize artist = _artist;
+@synthesize albumArtist = _albumArtist;
 @synthesize year = _year;
 @synthesize album = _album;
 @synthesize cd = _cd;
@@ -28,11 +29,16 @@
 
     new.id = [data objectForKey:@"Persistent ID"];
     new.artist = [data objectForKey:@"Artist"];
+    new.albumArtist = [data objectForKey:@"Album Artist"];
     new.year = [data objectForKey:@"Year"];
     new.album = [data objectForKey:@"Album"];
     new.cd = [data objectForKey:@"Disc Number"];
     new.number = [[data objectForKey:@"Track Number"] intValue];
     new.name = [data objectForKey:@"Name"];
+
+    if ([data objectForKey:@"Compilation"] && (new.albumArtist == nil)) {
+        new.albumArtist = @"Various Artists";
+    }
 
     new.repr = [new representation];
     new.lower = [new.repr lowercaseString];
@@ -42,7 +48,7 @@
 
 - (NSString *)representation {
     return [NSString stringWithFormat:@"%@ %@ %@ %@ %02d %@",
-            self.artist,
+            self.albumArtist ? self.albumArtist : self.artist,
             self.year,
             self.album,
             self.cd,
