@@ -37,4 +37,8 @@
     [self selectRowIndexes:indexes byExtendingSelection:NO];
 }
 
+- (BOOL)acceptsFirstResponder {
+    return NO;
+}
+
 @end
