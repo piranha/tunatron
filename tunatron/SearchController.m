@@ -95,8 +95,13 @@
                               predicateWithFormat:@"persistentID == %@",
                               track.id];
     NSArray *tracks = [[pl tracks] filteredArrayUsingPredicate:predicate];
+    iTunesTrack *found = [tracks objectAtIndex:0];
 
-    [[tracks objectAtIndex:0] playOnce:NO];
+    if (found.id == self.itunes.currentTrack.id) {
+        [self.itunes stop];
+    }
+
+    [found playOnce:NO];
 }
 
 - (void)playSelectedTrack {
@@ -106,16 +111,27 @@
     }
 }
 
-- (int)currentTrackIndex {
+- (Track *)playingTrack {
     if (self.itunes.playerState == iTunesEPlSStopped)
-        return 0;
+        return nil;
     NSString * id = self.itunes.currentTrack.persistentID;
-    return [self.found
-            indexOfObjectPassingTest:^BOOL(ScoredTrack *st, NSUInteger idx, BOOL *stop) {
-                return [st.track.id isEqualToString:id];
-            }];
+    for (Track *track in [self.tracks objectEnumerator]) {
+        if (track.id == id) {
+            return track;
+        }
+    }
+    return nil;
 }
 
+- (int)playingTrackIndex {
+    Track *playing = [self playingTrack];
+    if (!playing)
+        return 0;
+    return [self.found
+            indexOfObjectPassingTest:^BOOL(ScoredTrack *st, NSUInteger idx, BOOL *stop) {
+                return st.track == playing;
+            }];
+}
 
 #pragma mark - Window Delegation
 
@@ -196,7 +212,7 @@ doCommandBySelector:(SEL)selector {
 - (void)scrollToPlaying {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        int idx = [self currentTrackIndex];
+        int idx = [self playingTrackIndex];
         [self.table scrollRowToVisible:idx];
         self.table.selectedRow = idx;
     });
