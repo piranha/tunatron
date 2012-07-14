@@ -4,8 +4,9 @@ build:
 	xcodebuild CONFIGURATION_BUILD_DIR=Release
 
 tunatron.zip: build
+	@rm -rf tunatron.app tunatron.zip
 	mv Release/tunatron.app .
-	cd Release && zip -r tunatron.zip tunatron.app
+	zip -r tunatron.zip tunatron.app
 	rm -rf Release
 
 upload: tunatron.zip
