@@ -24,7 +24,6 @@
     self.table.target = self;
     self.table.doubleAction = @selector(handleTableDoubleAction:);
     self.table.enterAction = @selector(handleTableEnterAction:);
-//    self.table.selectionHighlightStyle = NSTableViewSelectionHighlightStyleSourceList;
 
     self.found = [NSMutableArray new];
     self.itunes = [SBApplication

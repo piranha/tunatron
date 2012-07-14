@@ -1403,11 +1403,11 @@
 											<reference key="NSNextKeyView" ref="601921253"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<bool key="NSEnabled">YES</bool>
-											<object class="NSTableHeaderView" key="NSHeaderView" id="255578488">
-												<reference key="NSNextResponder" ref="872583478"/>
+											<object class="NSTableHeaderView" key="NSHeaderView" id="262089665">
+												<reference key="NSNextResponder" ref="267940062"/>
 												<int key="NSvFlags">256</int>
 												<string key="NSFrameSize">{748, 17}</string>
-												<reference key="NSSuperview" ref="872583478"/>
+												<reference key="NSSuperview" ref="267940062"/>
 												<reference key="NSWindow"/>
 												<reference key="NSTableView" ref="417685121"/>
 											</object>
@@ -1551,7 +1551,20 @@
 											</array>
 											<double key="NSIntercellSpacingWidth">3</double>
 											<double key="NSIntercellSpacingHeight">2</double>
-											<reference key="NSBackgroundColor" ref="613644265"/>
+											<object class="NSColor" key="NSBackgroundColor">
+												<int key="NSColorSpace">6</int>
+												<string key="NSCatalogName">System</string>
+												<string key="NSColorName">_sourceListBackgroundColor</string>
+												<object class="NSColor" key="NSColor">
+													<int key="NSColorSpace">6</int>
+													<string key="NSCatalogName">System</string>
+													<string key="NSColorName">alternateSelectedControlColor</string>
+													<object class="NSColor" key="NSColor">
+														<int key="NSColorSpace">1</int>
+														<bytes key="NSRGB">MCAwIDEAA</bytes>
+													</object>
+												</object>
+											</object>
 											<object class="NSColor" key="NSGridColor">
 												<int key="NSColorSpace">6</int>
 												<string key="NSCatalogName">System</string>
@@ -1569,7 +1582,8 @@
 											<int key="NSDraggingSourceMaskForLocal">15</int>
 											<int key="NSDraggingSourceMaskForNonLocal">0</int>
 											<bool key="NSAllowsTypeSelect">NO</bool>
-											<int key="NSTableViewDraggingDestinationStyle">0</int>
+											<int key="NSTableViewSelectionHighlightStyle">1</int>
+											<int key="NSTableViewDraggingDestinationStyle">1</int>
 											<int key="NSTableViewGroupRowStyle">1</int>
 										</object>
 									</array>
@@ -1606,17 +1620,17 @@
 									<string key="NSAction">_doScroller:</string>
 									<double key="NSPercent">0.99866488651535379</double>
 								</object>
-								<object class="NSClipView" id="872583478">
+								<object class="NSClipView" id="267940062">
 									<reference key="NSNextResponder" ref="760080475"/>
 									<int key="NSvFlags">2304</int>
 									<array class="NSMutableArray" key="NSSubviews">
-										<reference ref="255578488"/>
+										<reference ref="262089665"/>
 									</array>
 									<string key="NSFrame">{{1, 0}, {748, 17}}</string>
 									<reference key="NSSuperview" ref="760080475"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView" ref="255578488"/>
-									<reference key="NSDocView" ref="255578488"/>
+									<reference key="NSNextKeyView" ref="262089665"/>
+									<reference key="NSDocView" ref="262089665"/>
 									<reference key="NSBGColor" ref="204636648"/>
 									<int key="NScvFlags">4</int>
 								</object>
@@ -1630,7 +1644,7 @@
 							<reference key="NSVScroller" ref="601921253"/>
 							<reference key="NSHScroller" ref="498000948"/>
 							<reference key="NSContentView" ref="570772307"/>
-							<reference key="NSHeaderClipView" ref="872583478"/>
+							<reference key="NSHeaderClipView" ref="267940062"/>
 							<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 						</object>
 					</array>
@@ -3573,7 +3587,7 @@
 							<reference ref="417685121"/>
 							<reference ref="498000948"/>
 							<reference ref="601921253"/>
-							<reference ref="255578488"/>
+							<reference ref="262089665"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
@@ -3717,7 +3731,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">665</int>
-						<reference key="object" ref="255578488"/>
+						<reference key="object" ref="262089665"/>
 						<reference key="parent" ref="760080475"/>
 					</object>
 				</array>
