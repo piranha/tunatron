@@ -12,6 +12,7 @@
 #define ITUNESLIBRARY [@"~/Music/iTunes/iTunes Music Library.xml" stringByStandardizingPath]
 
 @class iTunesApplication;
+@class Track;
 
 @interface SearchController : NSObject <NSTableViewDataSource, NSTableViewDelegate, NSWindowDelegate>
 
@@ -26,6 +27,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 @property dispatch_source_t source;
 
 @property (copy) NSString *currentSearch;
+@property (weak) Track *currentTrack;
 
 // UI elements
 @property (weak) IBOutlet NSBetterTableView *table;

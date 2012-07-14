@@ -18,7 +18,10 @@
 @synthesize tracks = _tracks;
 @synthesize itunes = _itunes;
 @synthesize source = _source;
+
 @synthesize currentSearch = _currentSearch;
+@synthesize currentTrack = _currentTrack;
+
 
 - (void)awakeFromNib {
     self.table.target = self;
@@ -77,6 +80,7 @@
      replaceObjectsInRange:allFound
      withObjectsFromArray:replacement];
     [self.table reloadData];
+    [self scrollToSelected];
 }
 
 
@@ -96,15 +100,8 @@
 }
 
 - (void)playSelectedTrack {
-    NSUInteger idx = self.table.selectedRowIndexes.firstIndex;
-    if (idx == NSNotFound)
-        idx = 0;
-    ScoredTrack *current = [self.found objectAtIndex:idx];
+    ScoredTrack *current = [self.found objectAtIndex:self.table.selectedRow];
     if (current) {
-        //        NSLog(@"Starting %lu with score %f for %@",
-        //              idx,
-        //              current.score,
-        //              current.track.repr);
         [self play:current.track];
     }
 }
@@ -122,17 +119,8 @@
 
 #pragma mark - Window Delegation
 
-- (void)bringCurrentTrackIntoVisibility {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        int idx = [self currentTrackIndex];
-        [self.table scrollRowToVisible:idx];
-        self.table.selectedRow = idx;
-    });
-}
-
 - (void)windowDidBecomeKey:(NSNotification *)notification {
-    [self bringCurrentTrackIntoVisibility];
+    [self scrollToPlaying];
 }
 
 
@@ -196,6 +184,46 @@ doCommandBySelector:(SEL)selector {
     [self playSelectedTrack];
 }
 
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    if (self.table.selectedRow == NSNotFound) {
+//        self.currentTrack = nil;
+        return;
+    }
+    ScoredTrack * current = [self.found objectAtIndex:self.table.selectedRow];
+    self.currentTrack = current.track;
+}
+
+- (void)scrollToPlaying {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        int idx = [self currentTrackIndex];
+        [self.table scrollRowToVisible:idx];
+        self.table.selectedRow = idx;
+    });
+}
+
+- (void)scrollToSelected {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        if (self.currentTrack == nil) {
+            [self.table scrollRowToVisible:0];
+            return;
+        }
+
+        NSUInteger idx = [self.found
+                          indexOfObjectPassingTest:^BOOL(ScoredTrack *st, NSUInteger idx, BOOL *stop) {
+                              return st.track == self.currentTrack;
+                          }];
+
+        if (idx == NSNotFound) {
+            [self.table scrollRowToVisible:0];
+            return;
+        }
+
+        [self.table scrollRowToVisible:idx];
+        self.table.selectedRow = idx;
+    });
+}
 
 # pragma mark - Table Data Source
 
@@ -237,7 +265,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
      }];
 
     [self searchFor:self.currentSearch];
-    [self bringCurrentTrackIntoVisibility];
+    [self scrollToPlaying];
 }
 
 - (NSString *)iTunesLibraryPath {

@@ -1403,11 +1403,11 @@
 											<reference key="NSNextKeyView" ref="601921253"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<bool key="NSEnabled">YES</bool>
-											<object class="NSTableHeaderView" key="NSHeaderView" id="262089665">
-												<reference key="NSNextResponder" ref="267940062"/>
+											<object class="NSTableHeaderView" key="NSHeaderView" id="1028032746">
+												<reference key="NSNextResponder" ref="330974088"/>
 												<int key="NSvFlags">256</int>
 												<string key="NSFrameSize">{748, 17}</string>
-												<reference key="NSSuperview" ref="267940062"/>
+												<reference key="NSSuperview" ref="330974088"/>
 												<reference key="NSWindow"/>
 												<reference key="NSTableView" ref="417685121"/>
 											</object>
@@ -1620,17 +1620,17 @@
 									<string key="NSAction">_doScroller:</string>
 									<double key="NSPercent">0.99866488651535379</double>
 								</object>
-								<object class="NSClipView" id="267940062">
+								<object class="NSClipView" id="330974088">
 									<reference key="NSNextResponder" ref="760080475"/>
 									<int key="NSvFlags">2304</int>
 									<array class="NSMutableArray" key="NSSubviews">
-										<reference ref="262089665"/>
+										<reference ref="1028032746"/>
 									</array>
 									<string key="NSFrame">{{1, 0}, {748, 17}}</string>
 									<reference key="NSSuperview" ref="760080475"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView" ref="262089665"/>
-									<reference key="NSDocView" ref="262089665"/>
+									<reference key="NSNextKeyView" ref="1028032746"/>
+									<reference key="NSDocView" ref="1028032746"/>
 									<reference key="NSBGColor" ref="204636648"/>
 									<int key="NScvFlags">4</int>
 								</object>
@@ -1644,7 +1644,7 @@
 							<reference key="NSVScroller" ref="601921253"/>
 							<reference key="NSHScroller" ref="498000948"/>
 							<reference key="NSContentView" ref="570772307"/>
-							<reference key="NSHeaderClipView" ref="267940062"/>
+							<reference key="NSHeaderClipView" ref="330974088"/>
 							<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 						</object>
 					</array>
@@ -2443,6 +2443,14 @@
 						<reference key="destination" ref="839133948"/>
 					</object>
 					<int key="connectionID">628</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="417685121"/>
+						<reference key="destination" ref="839133948"/>
+					</object>
+					<int key="connectionID">666</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3587,7 +3595,7 @@
 							<reference ref="417685121"/>
 							<reference ref="498000948"/>
 							<reference ref="601921253"/>
-							<reference ref="262089665"/>
+							<reference ref="1028032746"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
@@ -3731,7 +3739,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">665</int>
-						<reference key="object" ref="262089665"/>
+						<reference key="object" ref="1028032746"/>
 						<reference key="parent" ref="760080475"/>
 					</object>
 				</array>
@@ -3935,7 +3943,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">665</int>
+			<int key="maxID">666</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
