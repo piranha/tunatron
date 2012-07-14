@@ -1405,7 +1405,7 @@
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTableHeaderView" key="NSHeaderView" id="422519297">
 												<reference key="NSNextResponder" ref="214380998"/>
-												<int key="NSvFlags">256</int>
+												<int key="NSvFlags">4352</int>
 												<string key="NSFrameSize">{748, 17}</string>
 												<reference key="NSSuperview" ref="214380998"/>
 												<reference key="NSWindow"/>
@@ -1603,6 +1603,7 @@
 									<string key="NSFrame">{{1, 432}, {748, 15}}</string>
 									<reference key="NSSuperview" ref="760080475"/>
 									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:60</string>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="760080475"/>
@@ -1643,7 +1644,7 @@
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="954313378"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
