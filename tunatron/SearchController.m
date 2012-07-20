@@ -116,7 +116,7 @@
         return nil;
     NSString * id = self.itunes.currentTrack.persistentID;
     for (Track *track in [self.tracks objectEnumerator]) {
-        if (track.id == id) {
+        if ([track.id isEqualToString:id]) {
             return track;
         }
     }
