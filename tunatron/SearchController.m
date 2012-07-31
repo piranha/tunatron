@@ -213,8 +213,17 @@ doCommandBySelector:(SEL)selector {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         int idx = [self playingTrackIndex];
-        [self.table scrollRowToVisible:idx];
         self.table.selectedRow = idx;
+        [self.table scrollRowToVisible:idx];
+
+        // idea here is that if selected row is too close to an edge (here -
+        // less than 5 rows between it and an edge), then it should be centered
+        NSRange rng = [self.table rowsInRect:self.table.visibleRect];
+        if (rng.location + 5 > idx) {
+            [self.table scrollRowToVisible:idx - (rng.length / 2)];
+        } else if (rng.location + rng.length - 5 < idx) {
+            [self.table scrollRowToVisible:idx + (rng.length / 2)];
+        }
     });
 }
 
