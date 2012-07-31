@@ -11,3 +11,7 @@ tunatron.zip: build
 
 upload: tunatron.zip
 	github-upload.py tunatron.zip
+
+install: tunatron.zip
+	rm -rf /Applications/tunatron.app
+	mv tunatron.app /Applications/
