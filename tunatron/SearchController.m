@@ -21,6 +21,7 @@
 
 @synthesize currentSearch = _currentSearch;
 @synthesize currentTrack = _currentTrack;
+@synthesize previouslyPlayingTrack = _previouslyPlayingTrack;
 
 
 - (void)awakeFromNib {
@@ -38,15 +39,22 @@
     self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
     dispatch_source_set_event_handler(self.source, ^{
         NSMutableArray * found = [self innerSearchFor:self.currentSearch];
-
         [self updateFound:found];
     });
     dispatch_resume(self.source);
 
-    // load library asynchronously so application start is not that slow
+    // load library asynchronously so application starts faster
     dispatch_async(queue, ^(void) {
         [self readLibrary];
     });
+
+    // listen to iTunes notifications to update currently playing song
+    NSDistributedNotificationCenter *nc = [NSDistributedNotificationCenter
+                                           defaultCenter];
+    [nc addObserver:self
+           selector:@selector(playingTrackChanged:)
+               name:@"com.apple.iTunes.playerInfo"
+             object:nil];
 }
 
 
@@ -84,7 +92,6 @@
 }
 
 
-
 #pragma mark - iTunes Communication
 
 - (void)play:(Track *)track {
@@ -114,23 +121,41 @@
 - (Track *)playingTrack {
     if (self.itunes.playerState == iTunesEPlSStopped)
         return nil;
-    NSString * id = self.itunes.currentTrack.persistentID;
-    for (Track *track in [self.tracks objectEnumerator]) {
-        if ([track.id isEqualToString:id]) {
-            return track;
-        }
-    }
-    return nil;
+    return [self trackById:self.itunes.currentTrack.persistentID];
 }
 
-- (int)playingTrackIndex {
-    Track *playing = [self playingTrack];
-    if (!playing)
-        return 0;
-    return [self.found
-            indexOfObjectPassingTest:^BOOL(ScoredTrack *st, NSUInteger idx, BOOL *stop) {
-                return st.track == playing;
-            }];
+- (void)playingTrackChanged:(NSNotification *)notification {
+    NSString *id = [notification.userInfo objectForKey:@"PersistentID"];
+    // persistent id comes as a string with decimal number in notification,
+    // unlike library, where it is stored as uppercase hex
+    id = [[NSString stringWithFormat:@"%lx", id.integerValue] uppercaseString];
+
+    Track *track = [self trackById:id];
+    NSInteger idx = NSNotFound;
+
+    // so if know nothing about playing and nothing is selected why just not
+    // select newly started song?
+    if (self.previouslyPlayingTrack == nil &&
+        self.table.selectedRow == NSNotFound) {
+
+        idx = [self trackVisibleIndex:track];
+
+    } else {
+        NSInteger previdx = [self
+                             trackVisibleIndex:self.previouslyPlayingTrack];
+
+        // if the previously playing track had been selected, then we are going
+        // to put selection on this new song
+        if (previdx == self.table.selectedRow) {
+            idx = [self trackVisibleIndex:track];
+        }
+    }
+
+    if (idx != NSNotFound) {
+        [self selectAndScrollTo:idx];
+    }
+
+    self.previouslyPlayingTrack = track;
 }
 
 #pragma mark - Window Delegation
@@ -202,28 +227,32 @@ doCommandBySelector:(SEL)selector {
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     if (self.table.selectedRow == NSNotFound) {
-//        self.currentTrack = nil;
         return;
     }
     ScoredTrack * current = [self.found objectAtIndex:self.table.selectedRow];
     self.currentTrack = current.track;
 }
 
+- (void)selectAndScrollTo:(NSInteger)idx {
+    self.table.selectedRow = idx;
+    [self.table scrollRowToVisible:idx];
+
+    // idea here is that if selected row is too close to an edge (here -
+    // less than 5 rows between it and an edge), then it should be centered
+    NSRange range = [self.table rowsInRect:self.table.visibleRect];
+    if (range.location + 5 > idx) {
+        [self.table scrollRowToVisible:idx - (range.length / 2)];
+    } else if (range.location + range.length - 5 < idx) {
+        [self.table scrollRowToVisible:idx + (range.length / 2)];
+    }
+}
+
 - (void)scrollToPlaying {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        int idx = [self playingTrackIndex];
-        self.table.selectedRow = idx;
-        [self.table scrollRowToVisible:idx];
-
-        // idea here is that if selected row is too close to an edge (here -
-        // less than 5 rows between it and an edge), then it should be centered
-        NSRange rng = [self.table rowsInRect:self.table.visibleRect];
-        if (rng.location + 5 > idx) {
-            [self.table scrollRowToVisible:idx - (rng.length / 2)];
-        } else if (rng.location + rng.length - 5 < idx) {
-            [self.table scrollRowToVisible:idx + (rng.length / 2)];
-        }
+        self.previouslyPlayingTrack = [self playingTrack];
+        NSInteger idx = [self trackVisibleIndex:self.previouslyPlayingTrack];
+        [self selectAndScrollTo:idx];
     });
 }
 
@@ -235,18 +264,14 @@ doCommandBySelector:(SEL)selector {
             return;
         }
 
-        NSUInteger idx = [self.found
-                          indexOfObjectPassingTest:^BOOL(ScoredTrack *st, NSUInteger idx, BOOL *stop) {
-                              return st.track == self.currentTrack;
-                          }];
+        NSInteger idx = [self trackVisibleIndex:self.currentTrack];
 
         if (idx == NSNotFound) {
             [self.table scrollRowToVisible:0];
             return;
         }
 
-        [self.table scrollRowToVisible:idx];
-        self.table.selectedRow = idx;
+        [self selectAndScrollTo:idx];
     });
 }
 
@@ -302,6 +327,22 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     if (!path)
         return ITUNESLIBRARY;
     return [[NSURL URLWithString:path] path];
+}
+
+- (Track *)trackById:(NSString *)id {
+    for (Track *track in [self.tracks objectEnumerator]) {
+        if ([track.id isEqualToString:id]) {
+            return track;
+        }
+    }
+    return nil;
+}
+
+- (NSInteger)trackVisibleIndex:(Track *)track {
+    return [self.found
+            indexOfObjectPassingTest:^BOOL(ScoredTrack *st, NSUInteger idx, BOOL *stop) {
+                return st.track == track;
+            }];
 }
 
 @end

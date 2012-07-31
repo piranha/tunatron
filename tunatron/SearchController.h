@@ -28,6 +28,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 @property (copy) NSString *currentSearch;
 @property (weak) Track *currentTrack;
+@property (weak) Track *previouslyPlayingTrack;
 
 // UI elements
 @property (weak) IBOutlet NSBetterTableView *table;
