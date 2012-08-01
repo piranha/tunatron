@@ -40,7 +40,14 @@
     // setup 'search is done' queue and event handler
     self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
     dispatch_source_set_event_handler(self.source, ^{
+//        NSDate *start = [NSDate date];
+//        NSString *s = self.currentSearch;
+
         NSArray * found = [self innerSearchFor:self.currentSearch];
+
+//        NSTimeInterval duration = fabs([start timeIntervalSinceNow]);
+//        NSLog(@"Search '%@' has taken %fs", s, duration);
+
         [self updateFound:found];
     });
     dispatch_resume(self.source);

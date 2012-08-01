@@ -51,30 +51,38 @@
              if (val == nil) {
                  [index addObject:@""];
              } else {
-                 [index addObject:[NSString stringWithFormat:@"%@", val]];
+                 [index addObject:[[NSString stringWithFormat:@"%@", val]
+                                   lowercaseString]];
              }
          }];
     }
 }
 
 - (BOOL)term:(NSString *)term contains:(NSString *)needle {
-    unichar c;
     int idx = -1;
     int tl = term.length;
     int nl = needle.length;
+    int i, j;
+    BOOL found;
 
-    for (int i = 0; i < nl; i++) {
-        c = [needle characterAtIndex:i];
-        NSRange rng = [term
-                       rangeOfString:[NSString stringWithFormat:@"%c", c]
-                       options:NSCaseInsensitiveSearch | NSWidthInsensitiveSearch
-                       range:NSMakeRange(idx + 1, tl - idx - 1)];
-        if (rng.location == NSNotFound) {
+    unichar needleb[nl + 1];
+    unichar termb[tl + 1];
+    [needle getCharacters:needleb range:NSMakeRange(0, nl)];
+    [term getCharacters:termb range:NSMakeRange(0, tl)];
+
+    for (i = 0; i < nl; i++) {
+        found = NO;
+        for (j = idx + 1; j < tl; j++) {
+            if (needleb[i] == termb[j]) {
+                idx = j;
+                found = YES;
+                break;
+            }
+        }
+        if (!found) {
             return NO;
         }
-        idx = rng.location;
     }
-
     return YES;
 }
 
@@ -83,7 +91,7 @@
         return self.tracks;
     }
 
-    NSArray *words = [needle componentsSeparatedByString:@" "];
+    NSArray *words = [[needle lowercaseString] componentsSeparatedByString:@" "];
     NSMutableArray *results = [NSMutableArray arrayWithCapacity:words.count];
     NSMutableSet *found;
 
@@ -110,6 +118,11 @@
     for (NSNumber *x in found) {
         [tracks addObject:[self.tracks objectAtIndex:x.intValue]];
     }
+
+    [tracks
+     sortUsingComparator:^NSComparisonResult(Track *t1, Track *t2) {
+         return [t1 compare:t2];
+     }];
 
     return tracks;
 }
