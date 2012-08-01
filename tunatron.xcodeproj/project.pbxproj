@@ -12,7 +12,6 @@
 		943264EB15A7282000CCA026 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943264EA15A7282000CCA026 /* Preferences.xib */; };
 		9432650215A7297400CCA026 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9432650115A7297400CCA026 /* Carbon.framework */; };
 		9445241615A49F4D00B55A48 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445241515A49F4D00B55A48 /* Track.m */; };
-		9445241E15A4E32A00B55A48 /* NSString+Scoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445241D15A4E32A00B55A48 /* NSString+Scoring.m */; };
 		9445242115A4E8C700B55A48 /* ScoredTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9445242015A4E8C700B55A48 /* ScoredTrack.m */; };
 		9462923915A1EE750067701C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9462923815A1EE750067701C /* Cocoa.framework */; };
 		9462924315A1EE750067701C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9462924115A1EE750067701C /* InfoPlist.strings */; };
@@ -25,6 +24,7 @@
 		94BF47CD15A82512004A4593 /* fish-glyph-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF47CC15A82512004A4593 /* fish-glyph-24.png */; };
 		94BF47D615A827E5004A4593 /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BF47D515A827E5004A4593 /* StatusItemView.m */; };
 		94C29E9D15A5CD80003656CB /* NSBetterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C29E9C15A5CD80003656CB /* NSBetterTableView.m */; };
+		94C7FC1A15C93893007A5E18 /* SearchIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C7FC1915C93893007A5E18 /* SearchIndex.m */; };
 		94E8D9F415A9BCCA006EDD7A /* MASShortcut+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E8D9EC15A9BCCA006EDD7A /* MASShortcut+UserDefaults.m */; };
 		94E8D9F515A9BCCA006EDD7A /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E8D9EE15A9BCCA006EDD7A /* MASShortcut.m */; };
 		94E8D9F615A9BCCA006EDD7A /* MASShortcutView+UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E8D9F015A9BCCA006EDD7A /* MASShortcutView+UserDefaults.m */; };
@@ -39,8 +39,6 @@
 		9432650115A7297400CCA026 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		9445241415A49F4D00B55A48 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		9445241515A49F4D00B55A48 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
-		9445241C15A4E32900B55A48 /* NSString+Scoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Scoring.h"; sourceTree = "<group>"; };
-		9445241D15A4E32A00B55A48 /* NSString+Scoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Scoring.m"; sourceTree = "<group>"; };
 		9445241F15A4E8C700B55A48 /* ScoredTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoredTrack.h; sourceTree = "<group>"; };
 		9445242015A4E8C700B55A48 /* ScoredTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoredTrack.m; sourceTree = "<group>"; };
 		9462923415A1EE750067701C /* tunatron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tunatron.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +63,8 @@
 		94BF47D515A827E5004A4593 /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
 		94C29E9B15A5CD80003656CB /* NSBetterTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBetterTableView.h; sourceTree = "<group>"; };
 		94C29E9C15A5CD80003656CB /* NSBetterTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBetterTableView.m; sourceTree = "<group>"; };
+		94C7FC1815C93893007A5E18 /* SearchIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchIndex.h; sourceTree = "<group>"; };
+		94C7FC1915C93893007A5E18 /* SearchIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchIndex.m; sourceTree = "<group>"; };
 		94E8D9EB15A9BCCA006EDD7A /* MASShortcut+UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASShortcut+UserDefaults.h"; sourceTree = "<group>"; };
 		94E8D9EC15A9BCCA006EDD7A /* MASShortcut+UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut+UserDefaults.m"; sourceTree = "<group>"; };
 		94E8D9ED15A9BCCA006EDD7A /* MASShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASShortcut.h; sourceTree = "<group>"; };
@@ -105,10 +105,10 @@
 				9462926015A32FA20067701C /* iTunes.h */,
 				9462925515A1EF6A0067701C /* SearchController.h */,
 				9462925615A1EF6A0067701C /* SearchController.m */,
+				94C7FC1815C93893007A5E18 /* SearchIndex.h */,
+				94C7FC1915C93893007A5E18 /* SearchIndex.m */,
 				9445241415A49F4D00B55A48 /* Track.h */,
 				9445241515A49F4D00B55A48 /* Track.m */,
-				9445241C15A4E32900B55A48 /* NSString+Scoring.h */,
-				9445241D15A4E32A00B55A48 /* NSString+Scoring.m */,
 				9445241F15A4E8C700B55A48 /* ScoredTrack.h */,
 				9445242015A4E8C700B55A48 /* ScoredTrack.m */,
 			);
@@ -287,7 +287,6 @@
 				9462924C15A1EE750067701C /* AppDelegate.m in Sources */,
 				9462925715A1EF6A0067701C /* SearchController.m in Sources */,
 				9445241615A49F4D00B55A48 /* Track.m in Sources */,
-				9445241E15A4E32A00B55A48 /* NSString+Scoring.m in Sources */,
 				9445242115A4E8C700B55A48 /* ScoredTrack.m in Sources */,
 				94C29E9D15A5CD80003656CB /* NSBetterTableView.m in Sources */,
 				943264E915A7280A00CCA026 /* PreferencesController.m in Sources */,
@@ -296,6 +295,7 @@
 				94E8D9F515A9BCCA006EDD7A /* MASShortcut.m in Sources */,
 				94E8D9F615A9BCCA006EDD7A /* MASShortcutView+UserDefaults.m in Sources */,
 				94E8D9F715A9BCCA006EDD7A /* MASShortcutView.m in Sources */,
+				94C7FC1A15C93893007A5E18 /* SearchIndex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

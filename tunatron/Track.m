@@ -7,7 +7,6 @@
 //
 
 #import "Track.h"
-#import "NSString+Scoring.h"
 #import "ScoredTrack.h"
 
 @implementation Track
@@ -47,9 +46,9 @@
 }
 
 - (NSString *)representation {
-    return [NSString stringWithFormat:@"%@ %@ %@ %@ %02d %@",
+    return [NSString stringWithFormat:@"%@ %d %@ %@ %02d %@",
             self.albumArtist ? self.albumArtist : self.artist,
-            self.year,
+            self.year.intValue,
             self.album,
             self.cd,
             self.number,
@@ -58,23 +57,6 @@
 
 - (NSComparisonResult)compare:(Track *)other {
     return [self.repr compare:other.repr];
-}
-
-- (BOOL)matches:(NSString *)value {
-    NSRange result = [self.lower rangeOfString:value];
-    return result.location != NSNotFound;
-}
-
-- (CGFloat)score:(NSString *)abbreviation {
-    return [self.repr scoreForAbbreviation:abbreviation];
-}
-
-- (ScoredTrack *)scoredTrack:(NSString *)abbreviation {
-    CGFloat score = [self score:abbreviation];
-    if (score == 0) {
-        return nil;
-    }
-    return [ScoredTrack withScore:score andTrack:self];
 }
 
 - (NSString *)stringForColumn:(NSTableColumn *)column {

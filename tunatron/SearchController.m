@@ -10,12 +10,14 @@
 #import "iTunes.h"
 #import "Track.h"
 #import "ScoredTrack.h"
+#import "SearchIndex.h"
 
 @implementation SearchController
 @synthesize table = _table;
 
 @synthesize found = _found;
 @synthesize tracks = _tracks;
+@synthesize index = _index;
 @synthesize itunes = _itunes;
 @synthesize source = _source;
 
@@ -38,7 +40,7 @@
     // setup 'search is done' queue and event handler
     self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
     dispatch_source_set_event_handler(self.source, ^{
-        NSMutableArray * found = [self innerSearchFor:self.currentSearch];
+        NSArray * found = [self innerSearchFor:self.currentSearch];
         [self updateFound:found];
     });
     dispatch_resume(self.source);
@@ -65,24 +67,19 @@
     dispatch_source_merge_data(self.source, 1);
 }
 
-- (NSMutableArray *)innerSearchFor:(NSString *)value {
-    value = [value lowercaseString];
+- (NSArray *)innerSearchFor:(NSString *)value {
+    NSArray *foundTracks = [self.index search:[value lowercaseString]];
     NSMutableArray *found = [NSMutableArray new];
 
-    [self.tracks
-     enumerateObjectsUsingBlock:^(Track *track, NSUInteger idx, BOOL *stop) {
-         ScoredTrack * scored = [track scoredTrack:value];
-         if (scored) {
-             [found addObject:scored];
-         }
+    [foundTracks enumerateObjectsUsingBlock:^(Track *track, NSUInteger idx, BOOL *stop) {
+        [found addObject:[ScoredTrack withScore:1.0 andTrack:track]];
     }];
 
-    [found sortUsingSelector:@selector(score)];
     return found;
 }
 
 
-- (void)updateFound:(NSMutableArray *)replacement {
+- (void)updateFound:(NSArray *)replacement {
     NSRange allFound = NSMakeRange(0, self.found.count);
     [self.found
      replaceObjectsInRange:allFound
@@ -234,6 +231,11 @@ doCommandBySelector:(SEL)selector {
 }
 
 - (void)selectAndScrollTo:(NSInteger)idx {
+    if (idx == NSNotFound) {
+        [self.table deselectAll:self];
+        return;
+    }
+
     self.table.selectedRow = idx;
     [self.table scrollRowToVisible:idx];
 
@@ -311,8 +313,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
     [self.tracks
      sortUsingComparator:^NSComparisonResult(Track *t1, Track *t2) {
-         return [t2 compare:t1];
+         return [t1 compare:t2];
      }];
+
+    self.index = [SearchIndex withTracks:self.tracks];
 
     [self searchFor:self.currentSearch];
     [self scrollToPlaying];

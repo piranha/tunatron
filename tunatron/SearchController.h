@@ -13,6 +13,7 @@
 
 @class iTunesApplication;
 @class Track;
+@class SearchIndex;
 
 @interface SearchController : NSObject <NSTableViewDataSource, NSTableViewDelegate, NSWindowDelegate>
 
@@ -23,6 +24,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 @property (strong) NSMutableArray *found;
 @property (strong) NSMutableArray *tracks;
+@property (strong) SearchIndex *index;
 @property (strong) iTunesApplication *itunes;
 @property dispatch_source_t source;
 

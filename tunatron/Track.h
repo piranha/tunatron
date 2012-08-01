@@ -14,15 +14,12 @@
 
 + withDictionary:(NSDictionary *)data;
 - (NSComparisonResult)compare:(Track *)other;
-- (BOOL)matches:(NSString *)value;
-- (CGFloat)score:(NSString *)abbreviation;
-- (ScoredTrack *)scoredTrack:(NSString *)abbreviation;
 - (NSString *)stringForColumn:(NSTableColumn *)column;
 
 @property (copy) NSString *id;
 @property (copy) NSString *artist;
 @property (copy) NSString *albumArtist;
-@property (copy) NSString *year;
+@property (copy) NSNumber *year;
 @property (copy) NSString *album;
 @property (copy) NSString *cd;
 @property int number;

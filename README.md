@@ -6,9 +6,6 @@ that's all it intends to do. Set a global hotkey, and you're good.
 
 Some notes:
 
- - Filtering is taken directly from QuickSilver and is too generalized for the
-   task, which means results are not always optimal and sometimes slow (I've
-   seen queries which've taken up to 5 seconds).
  - The interface is not exceptionally pretty, just barely useful - if you want
    to fix that, please contribute (either with ideas what to do or with code).
  - I'm not an experienced Cocoa developer, so if you see ways to improve code,
