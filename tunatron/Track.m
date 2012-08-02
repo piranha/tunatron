@@ -19,9 +19,7 @@
 @synthesize cd = _cd;
 @synthesize number = _number;
 @synthesize name = _name;
-
 @synthesize repr = _repr;
-@synthesize lower = _lower;
 
 + (id)withDictionary:(NSDictionary *)data {
     Track * new = [super new];
@@ -40,7 +38,6 @@
     }
 
     new.repr = [new representation];
-    new.lower = [new.repr lowercaseString];
 
     return new;
 }
@@ -52,6 +49,13 @@
             self.album,
             self.cd,
             self.number,
+            self.name];
+}
+
+- (NSString *)shortRepr {
+    return [NSString stringWithFormat:@"%@ - %@ - %@",
+            self.albumArtist ? self.albumArtist : self.artist,
+            self.album,
             self.name];
 }
 

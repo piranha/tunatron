@@ -25,7 +25,7 @@
 @property int number;
 @property (copy) NSString *name;
 
-@property (copy) NSString *repr;
-@property (copy) NSString *lower;
+@property (strong) NSString *repr;
+@property (readonly) NSString *shortRepr;
 
 @end

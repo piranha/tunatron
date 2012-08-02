@@ -218,6 +218,21 @@ doCommandBySelector:(SEL)selector {
         return YES;
     }
 
+    if (selector == @selector(noop:)) {
+        NSEvent *ev = [NSApp currentEvent];
+        NSUInteger flags = ev.modifierFlags & NSDeviceIndependentModifierFlagsMask;
+        if ([ev.characters isEqualToString:@"c"] &&
+            (flags & NSCommandKeyMask) == NSCommandKeyMask){
+
+            NSPasteboard *board = [NSPasteboard generalPasteboard];
+            [board declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString]
+                          owner:nil];
+            [board setString:[self currentTrack].shortRepr
+                     forType:NSPasteboardTypeString];
+            return YES;
+        }
+    }
+
     return NO;
 }
 

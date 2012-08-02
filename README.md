@@ -16,3 +16,8 @@ I'm not sure if I forgot anything? Whatever, just try it, if you despise iTunes
 slow and inefficient search, or if you like how Foobar search works, or if you
 like Textmate/emacs' ido-mode/vim's command-T scatter matching for searching for
 files.
+
+TODO:
+
+ - album cover images in separate column
+ - playing queue maybe?
