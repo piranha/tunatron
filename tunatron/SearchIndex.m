@@ -58,22 +58,20 @@
     }
 }
 
-- (BOOL)term:(NSString *)term contains:(NSString *)needle {
+- (BOOL)term:(NSString *)term contains:(unichar *)needleb {
     int idx = -1;
     int tl = term.length;
-    int nl = needle.length;
-    int i, j;
+    int j;
     BOOL found;
 
-    unichar needleb[nl + 1];
     unichar termb[tl + 1];
-    [needle getCharacters:needleb range:NSMakeRange(0, nl)];
     [term getCharacters:termb range:NSMakeRange(0, tl)];
+    termb[tl] = 0;
 
-    for (i = 0; i < nl; i++) {
+    for (unichar *c = needleb; *c; c++) {
         found = NO;
-        for (j = idx + 1; j < tl; j++) {
-            if (needleb[i] == termb[j]) {
+        for (j = idx + 1; termb[j]; j++) {
+            if (*c == termb[j]) {
                 idx = j;
                 found = YES;
                 break;
@@ -93,23 +91,27 @@
 
     NSArray *words = [[needle lowercaseString] componentsSeparatedByString:@" "];
     NSMutableArray *results = [NSMutableArray arrayWithCapacity:words.count];
-    NSMutableSet *found;
 
-    for (NSString *word in words) {
-        found = [NSMutableSet new];
+    [words enumerateObjectsUsingBlock:^(NSString *word, NSUInteger idx, BOOL *stop) {
+        NSMutableSet *found = [NSMutableSet new];
         [results addObject:found];
+
+        int l = word.length;
+        unichar needleb[l + 1];
+        [word getCharacters:needleb range:NSMakeRange(0, l)];
+        needleb[l] = 0;
 
         for (NSMutableArray *index in self.indexes) {
             for (int i = 0; i < index.count; i++) {
                 NSString * term = [index objectAtIndex:i];
-                if ([self term:term contains:word]) {
+                if ([self term:term contains:needleb]) {
                     [found addObject:[NSNumber numberWithInt:i]];
                 }
             }
         }
-    };
+    }];
 
-    found = [results objectAtIndex:0];
+    NSMutableSet *found = [results objectAtIndex:0];
     for (int i = 1; i < results.count; i++) {
         [found intersectSet:[results objectAtIndex:i]];
     }
