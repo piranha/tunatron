@@ -211,7 +211,10 @@ doCommandBySelector:(SEL)selector {
         return YES;
     }
 
-    if (selector == @selector(moveUp:)) {
+    if (selector == @selector(cancelOperation:) &&
+        [control stringValue].length == 0) {
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"hide" object:nil];
         return YES;
     }
 

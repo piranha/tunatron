@@ -32,6 +32,11 @@
          [self toggleWindow];
      }];
 
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(receiveHide:)
+     name:@"hide"
+     object:nil];
 }
 
 - (void)activateWindow {
@@ -40,12 +45,20 @@
     [NSApp activateIgnoringOtherApps:YES];
 }
 
+- (void)hideWindow {
+    [NSApp hide:self];
+}
+
 - (void)toggleWindow {
     if (self.window.isKeyWindow) {
-        [NSApp hide:self];
+        [self hideWindow];
     } else {
         [self activateWindow];
     }
+}
+
+- (void)receiveHide:(NSNotification *)note {
+    [self hideWindow];
 }
 
 - (void)showPreferences:(id)sender {
