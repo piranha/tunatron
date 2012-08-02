@@ -14,6 +14,7 @@
 @class iTunesApplication;
 @class Track;
 @class SearchIndex;
+@class CDEvents;
 
 @interface SearchController : NSObject <NSTableViewDataSource, NSTableViewDelegate, NSWindowDelegate>
 
@@ -27,6 +28,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 @property (strong) SearchIndex *index;
 @property (strong) iTunesApplication *itunes;
 @property dispatch_source_t source;
+@property (strong) CDEvents *fsevents;
+@property (strong) NSDate *libraryDate;
 
 @property (copy) NSString *currentSearch;
 @property (weak) Track *currentTrack;

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		940C973D15CA737E00DE345D /* CDEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 940C972515CA737E00DE345D /* CDEvent.m */; };
+		940C973E15CA737E00DE345D /* CDEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 940C972715CA737E00DE345D /* CDEvents.m */; };
+		940C973F15CA737E00DE345D /* CDEventsTestApp-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 940C972D15CA737E00DE345D /* CDEventsTestApp-Info.plist */; };
+		940C974015CA737E00DE345D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 940C972F15CA737E00DE345D /* InfoPlist.strings */; };
+		940C974115CA737E00DE345D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 940C973115CA737E00DE345D /* Info.plist */; };
+		940C974215CA737E00DE345D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 940C973215CA737E00DE345D /* LICENSE */; };
+		940C974315CA737E00DE345D /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 940C973315CA737E00DE345D /* README.mdown */; };
+		940C974415CA737E00DE345D /* version.plist in Resources */ = {isa = PBXBuildFile; fileRef = 940C973415CA737E00DE345D /* version.plist */; };
 		943264E315A7246B00CCA026 /* fish-glyph.icns in Resources */ = {isa = PBXBuildFile; fileRef = 943264E215A7246B00CCA026 /* fish-glyph.icns */; };
 		943264E915A7280A00CCA026 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943264E815A7280A00CCA026 /* PreferencesController.m */; };
 		943264EB15A7282000CCA026 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943264EA15A7282000CCA026 /* Preferences.xib */; };
@@ -31,7 +39,38 @@
 		94E8D9F715A9BCCA006EDD7A /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E8D9F215A9BCCA006EDD7A /* MASShortcutView.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		940C974715CA737E00DE345D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 940C972815CA737E00DE345D /* CDEvents.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = CDEvents;
+		};
+		940C974915CA737E00DE345D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 940C972815CA737E00DE345D /* CDEvents.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C6D067D1167CC7400343E46;
+			remoteInfo = CDEventsTestApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		940C972415CA737E00DE345D /* CDEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEvent.h; sourceTree = "<group>"; };
+		940C972515CA737E00DE345D /* CDEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEvent.m; sourceTree = "<group>"; };
+		940C972615CA737E00DE345D /* CDEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEvents.h; sourceTree = "<group>"; };
+		940C972715CA737E00DE345D /* CDEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEvents.m; sourceTree = "<group>"; };
+		940C972815CA737E00DE345D /* CDEvents.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CDEvents.xcodeproj; sourceTree = "<group>"; };
+		940C972B15CA737E00DE345D /* CDEvents_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEvents_Prefix.pch; sourceTree = "<group>"; };
+		940C972C15CA737E00DE345D /* CDEventsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEventsDelegate.h; sourceTree = "<group>"; };
+		940C972D15CA737E00DE345D /* CDEventsTestApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CDEventsTestApp-Info.plist"; sourceTree = "<group>"; };
+		940C972E15CA737E00DE345D /* compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compat.h; sourceTree = "<group>"; };
+		940C973015CA737E00DE345D /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		940C973115CA737E00DE345D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		940C973215CA737E00DE345D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		940C973315CA737E00DE345D /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
+		940C973415CA737E00DE345D /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = version.plist; sourceTree = "<group>"; };
 		943264E215A7246B00CCA026 /* fish-glyph.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "fish-glyph.icns"; sourceTree = "<group>"; };
 		943264E715A7280A00CCA026 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		943264E815A7280A00CCA026 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
@@ -89,6 +128,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		940C971F15CA737E00DE345D /* CDEvents */ = {
+			isa = PBXGroup;
+			children = (
+				940C972415CA737E00DE345D /* CDEvent.h */,
+				940C972515CA737E00DE345D /* CDEvent.m */,
+				940C972615CA737E00DE345D /* CDEvents.h */,
+				940C972715CA737E00DE345D /* CDEvents.m */,
+				940C972815CA737E00DE345D /* CDEvents.xcodeproj */,
+				940C972B15CA737E00DE345D /* CDEvents_Prefix.pch */,
+				940C972C15CA737E00DE345D /* CDEventsDelegate.h */,
+				940C972D15CA737E00DE345D /* CDEventsTestApp-Info.plist */,
+				940C972E15CA737E00DE345D /* compat.h */,
+				940C972F15CA737E00DE345D /* InfoPlist.strings */,
+				940C973115CA737E00DE345D /* Info.plist */,
+				940C973215CA737E00DE345D /* LICENSE */,
+				940C973315CA737E00DE345D /* README.mdown */,
+				940C973415CA737E00DE345D /* version.plist */,
+			);
+			path = CDEvents;
+			sourceTree = "<group>";
+		};
+		940C972915CA737E00DE345D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				940C974815CA737E00DE345D /* CDEvents.framework */,
+				940C974A15CA737E00DE345D /* CDEventsTestApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		943264E115A7246B00CCA026 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +241,7 @@
 				943264E515A7279D00CCA026 /* Search */,
 				943264E615A727A700CCA026 /* Preferences */,
 				94BF47D315A82778004A4593 /* UI */,
+				940C971F15CA737E00DE345D /* CDEvents */,
 			);
 			path = tunatron;
 			sourceTree = "<group>";
@@ -251,16 +321,40 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = 9462922915A1EE750067701C;
 			productRefGroup = 9462923515A1EE750067701C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 940C972915CA737E00DE345D /* Products */;
+					ProjectRef = 940C972815CA737E00DE345D /* CDEvents.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9462923315A1EE750067701C /* tunatron */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		940C974815CA737E00DE345D /* CDEvents.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CDEvents.framework;
+			remoteRef = 940C974715CA737E00DE345D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		940C974A15CA737E00DE345D /* CDEventsTestApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CDEventsTestApp.app;
+			remoteRef = 940C974915CA737E00DE345D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9462923215A1EE750067701C /* Resources */ = {
@@ -273,6 +367,12 @@
 				943264E315A7246B00CCA026 /* fish-glyph.icns in Resources */,
 				943264EB15A7282000CCA026 /* Preferences.xib in Resources */,
 				94BF47CD15A82512004A4593 /* fish-glyph-24.png in Resources */,
+				940C973F15CA737E00DE345D /* CDEventsTestApp-Info.plist in Resources */,
+				940C974015CA737E00DE345D /* InfoPlist.strings in Resources */,
+				940C974115CA737E00DE345D /* Info.plist in Resources */,
+				940C974215CA737E00DE345D /* LICENSE in Resources */,
+				940C974315CA737E00DE345D /* README.mdown in Resources */,
+				940C974415CA737E00DE345D /* version.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,12 +396,22 @@
 				94E8D9F615A9BCCA006EDD7A /* MASShortcutView+UserDefaults.m in Sources */,
 				94E8D9F715A9BCCA006EDD7A /* MASShortcutView.m in Sources */,
 				94C7FC1A15C93893007A5E18 /* SearchIndex.m in Sources */,
+				940C973D15CA737E00DE345D /* CDEvent.m in Sources */,
+				940C973E15CA737E00DE345D /* CDEvents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		940C972F15CA737E00DE345D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				940C973015CA737E00DE345D /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		9462924115A1EE750067701C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -379,6 +489,10 @@
 		9462925315A1EE750067701C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tunatron/tunatron-Prefix.pch";
 				INFOPLIST_FILE = "tunatron/tunatron-Info.plist";
@@ -390,6 +504,10 @@
 		9462925415A1EE750067701C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tunatron/tunatron-Prefix.pch";
 				INFOPLIST_FILE = "tunatron/tunatron-Info.plist";

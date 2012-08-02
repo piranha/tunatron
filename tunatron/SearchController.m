@@ -11,6 +11,7 @@
 #import "Track.h"
 #import "ScoredTrack.h"
 #import "SearchIndex.h"
+#import "CDEvents/CDEvents.h"
 
 @implementation SearchController
 @synthesize table = _table;
@@ -20,6 +21,8 @@
 @synthesize index = _index;
 @synthesize itunes = _itunes;
 @synthesize source = _source;
+@synthesize fsevents = _fsevents;
+@synthesize libraryDate = _libraryDate;
 
 @synthesize currentSearch = _currentSearch;
 @synthesize currentTrack = _currentTrack;
@@ -52,10 +55,8 @@
     });
     dispatch_resume(self.source);
 
-    // load library asynchronously so application starts faster
-    dispatch_async(queue, ^(void) {
-        [self readLibrary];
-    });
+    // watcher will load library for a first time
+    [self iTunesLibraryWatch];
 
     // listen to iTunes notifications to update currently playing song
     NSDistributedNotificationCenter *nc = [NSDistributedNotificationCenter
@@ -64,6 +65,7 @@
            selector:@selector(playingTrackChanged:)
                name:@"com.apple.iTunes.playerInfo"
              object:nil];
+
 }
 
 
@@ -329,6 +331,24 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     [self scrollToPlaying];
 }
 
+- (void)checkLibraryModifications {
+    NSFileManager *man = [NSFileManager new];
+    NSString *path = [self iTunesLibraryPath];
+    NSDictionary *attrs = [man attributesOfItemAtPath:path error:NULL];
+    NSDate *mod = [attrs fileModificationDate];
+
+    if (self.libraryDate == nil ||
+        [self.libraryDate compare:mod] == NSOrderedAscending) {
+
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^(void) {
+            [self readLibrary];
+        });
+    }
+
+    self.libraryDate = mod;
+}
+
 - (NSString *)iTunesLibraryPath {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *userPref = [userDefaults persistentDomainForName:@"com.apple.iApps"];
@@ -338,6 +358,20 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     if (!path)
         return ITUNESLIBRARY;
     return [[NSURL URLWithString:path] path];
+}
+
+- (void)iTunesLibraryWatch {
+    NSURL *url = [NSURL URLWithString:
+                  [[self iTunesLibraryPath]
+                   stringByDeletingLastPathComponent]];
+
+    self.fsevents = [[CDEvents alloc]
+                     initWithURLs:[NSArray arrayWithObject:url]
+                     block:^(CDEvents *watcher, CDEvent *event) {
+                         [self checkLibraryModifications];
+                     }];
+
+    [self checkLibraryModifications];
 }
 
 - (Track *)trackById:(NSString *)id {
