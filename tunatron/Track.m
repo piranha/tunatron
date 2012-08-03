@@ -24,16 +24,16 @@
 + (id)withDictionary:(NSDictionary *)data {
     Track * new = [super new];
 
-    new.id = [data objectForKey:@"Persistent ID"];
-    new.artist = [data objectForKey:@"Artist"];
-    new.albumArtist = [data objectForKey:@"Album Artist"];
-    new.year = [data objectForKey:@"Year"];
-    new.album = [data objectForKey:@"Album"];
-    new.cd = [data objectForKey:@"Disc Number"];
-    new.number = [[data objectForKey:@"Track Number"] intValue];
-    new.name = [data objectForKey:@"Name"];
+    new.id = data[@"Persistent ID"];
+    new.artist = data[@"Artist"];
+    new.albumArtist = data[@"Album Artist"];
+    new.year = data[@"Year"];
+    new.album = data[@"Album"];
+    new.cd = data[@"Disc Number"];
+    new.number = [data[@"Track Number"] intValue];
+    new.name = data[@"Name"];
 
-    if ([data objectForKey:@"Compilation"] && (new.albumArtist == nil)) {
+    if (data[@"Compilation"] && (new.albumArtist == nil)) {
         new.albumArtist = @"Various Artists";
     }
 
@@ -63,8 +63,8 @@
     return [self.repr compare:other.repr];
 }
 
-- (NSString *)stringForColumn:(NSTableColumn *)column {
-    return [self valueForKey:[column identifier]];
+- (NSString *)objectForKeyedSubscript:(NSString *)key {
+    return [self valueForKey:key];
 }
 
 @end

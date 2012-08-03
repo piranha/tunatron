@@ -228,8 +228,7 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
             if (outError) {
                 NSString *format = NSLocalizedString(@"This shortcut cannot be used used because it is already used by the menu item ‘%@’.",
                                                      @"Message for alert when shortcut is already used");
-                NSDictionary *info = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:format, menuItem.title]
-                                                                 forKey:NSLocalizedDescriptionKey];
+                NSDictionary *info = @{NSLocalizedDescriptionKey: [NSString stringWithFormat:format, menuItem.title]};
                 *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:info];
             }
             return YES;
@@ -257,7 +256,7 @@ NSString *const kMASShortcutModifierFlags = @"ModifierFlags";
                                                               @"keyboard shortcut.\nIf you really want to use this key combination, most shortcuts "
                                                               @"can be changed in the Keyboard & Mouse panel in System Preferences.",
                                                               @"Message for alert when shortcut is already used by the system");
-                    NSDictionary *info = [NSDictionary dictionaryWithObject:description forKey:NSLocalizedDescriptionKey];
+                    NSDictionary *info = @{NSLocalizedDescriptionKey: description};
                     *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:info];
                 }
                 return YES;

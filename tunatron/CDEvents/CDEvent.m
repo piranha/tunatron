@@ -72,8 +72,8 @@
 #pragma mark NSCoding methods
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-	[aCoder encodeObject:[NSNumber numberWithUnsignedInteger:[self identifier]] forKey:@"identifier"];
-	[aCoder encodeObject:[NSNumber numberWithUnsignedInteger:[self flags]] forKey:@"flags"];
+	[aCoder encodeObject:@([self identifier]) forKey:@"identifier"];
+	[aCoder encodeObject:@([self flags]) forKey:@"flags"];
 	[aCoder encodeObject:[self date] forKey:@"date"];
 	[aCoder encodeObject:[self URL] forKey:@"URL"];
 }
@@ -83,7 +83,7 @@
 	self = [self initWithIdentifier:[[aDecoder decodeObjectForKey:@"identifier"] unsignedIntegerValue]
 							   date:[aDecoder decodeObjectForKey:@"date"]
 								URL:[aDecoder decodeObjectForKey:@"URL"]
-							  flags:[[aDecoder decodeObjectForKey:@"flags"] unsignedIntegerValue]];
+							  flags:[[aDecoder decodeObjectForKey:@"flags"] unsignedIntValue]];
 
 	return self;
 }

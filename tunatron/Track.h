@@ -14,7 +14,7 @@
 
 + withDictionary:(NSDictionary *)data;
 - (NSComparisonResult)compare:(Track *)other;
-- (NSString *)stringForColumn:(NSTableColumn *)column;
+- (NSString *)objectForKeyedSubscript:(NSString *)key;
 
 @property (copy) NSString *id;
 @property (copy) NSString *artist;

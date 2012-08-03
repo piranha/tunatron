@@ -216,7 +216,7 @@ streamCreationFlags:(CDEventsEventStreamCreationFlags)streamCreationFlags
 							   notificationLantency:[self notificationLatency]
 							ignoreEventsFromSubDirs:[self ignoreEventsFromSubDirectories]
 										excludeURLs:[self excludedURLs]
-								streamCreationFlags:_eventStreamCreationFlags];
+								streamCreationFlags:(unsigned int)_eventStreamCreationFlags];
 
 	return copy;
 }
@@ -280,7 +280,7 @@ streamCreationFlags:(CDEventsEventStreamCreationFlags)streamCreationFlags
 									   (__bridge CFArrayRef)watchedPaths,
 									   (FSEventStreamEventId)[self sinceEventIdentifier],
 									   [self notificationLatency],
-									   _eventStreamCreationFlags);
+									   (unsigned int)_eventStreamCreationFlags);
 }
 
 - (void)disposeEventStream
@@ -316,7 +316,7 @@ static void CDEventsCallback(
 
 		// We do this hackery to ensure that the eventPath string doesn't
 		// contain any trailing slash.
-		NSString *eventPath = [[eventPathsArray objectAtIndex:i] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+		NSString *eventPath = [eventPathsArray[i] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 		NSURL *eventURL		= [NSURL fileURLWithPath:eventPath];
 		eventPath			= [eventURL path];
 

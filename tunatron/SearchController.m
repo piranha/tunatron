@@ -101,14 +101,14 @@
 #pragma mark - iTunes Communication
 
 - (void)play:(Track *)track {
-    iTunesSource *source = [[self.itunes sources] objectAtIndex:0];
+    iTunesSource *source = [self.itunes sources][0];
     // Second playlist is 'Music' one, which is sorted and all that stuff
-    iTunesPlaylist *pl = [[source playlists] objectAtIndex:1];
+    iTunesPlaylist *pl = [source playlists][1];
     NSPredicate *predicate = [NSPredicate
                               predicateWithFormat:@"persistentID == %@",
                               track.id];
     NSArray *tracks = [[pl tracks] filteredArrayUsingPredicate:predicate];
-    iTunesTrack *found = [tracks objectAtIndex:0];
+    iTunesTrack *found = tracks[0];
 
     if (found.id == self.itunes.currentTrack.id) {
         [self.itunes stop];
@@ -118,7 +118,7 @@
 }
 
 - (void)playSelectedTrack {
-    ScoredTrack *current = [self.found objectAtIndex:self.table.selectedRow];
+    ScoredTrack *current = self.found[self.table.selectedRow];
     if (current) {
         [self play:current.track];
     }
@@ -131,7 +131,7 @@
 }
 
 - (void)playingTrackChanged:(NSNotification *)notification {
-    NSString *id = [notification.userInfo objectForKey:@"PersistentID"];
+    NSString *id = (notification.userInfo)[@"PersistentID"];
     // persistent id comes as a string with decimal number in notification,
     // unlike library, where it is stored as uppercase hex
     id = [[NSString stringWithFormat:@"%lx", id.integerValue] uppercaseString];
@@ -225,7 +225,7 @@ doCommandBySelector:(SEL)selector {
             (flags & NSCommandKeyMask) == NSCommandKeyMask){
 
             NSPasteboard *board = [NSPasteboard generalPasteboard];
-            [board declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString]
+            [board declareTypes:@[NSPasteboardTypeString]
                           owner:nil];
             [board setString:[self currentTrack].shortRepr
                      forType:NSPasteboardTypeString];
@@ -241,7 +241,7 @@ doCommandBySelector:(SEL)selector {
 
 - (void)handleTableDoubleAction:(id)event {
     NSInteger idx = self.table.clickedRow;
-    ScoredTrack *clicked = [self.found objectAtIndex:idx];
+    ScoredTrack *clicked = self.found[idx];
     [self play:clicked.track];
 }
 
@@ -253,7 +253,7 @@ doCommandBySelector:(SEL)selector {
     if (self.table.selectedRow == NSNotFound) {
         return;
     }
-    ScoredTrack * current = [self.found objectAtIndex:self.table.selectedRow];
+    ScoredTrack * current = self.found[self.table.selectedRow];
     self.currentTrack = current.track;
 }
 
@@ -313,14 +313,14 @@ doCommandBySelector:(SEL)selector {
 - (id)tableView:(NSTableView *)tableView
 objectValueForTableColumn:(NSTableColumn *)tableColumn
             row:(NSInteger)row {
-    ScoredTrack * item = [self.found objectAtIndex:row];
+    ScoredTrack * item = self.found[row];
 
     if (item == NULL) {
         NSLog(@"No track at index %ld", row);
         return NULL;
     }
 
-    return [item.track stringForColumn:tableColumn];
+    return item.track[[tableColumn identifier]];
 }
 
 
@@ -328,14 +328,13 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 - (void)readLibrary {
     NSString * libraryPath = [self iTunesLibraryPath];
-    NSDictionary * tracks = [[NSDictionary
-                              dictionaryWithContentsOfFile:libraryPath]
-                             objectForKey:@"Tracks"];
+    NSDictionary * tracks = [NSDictionary
+                              dictionaryWithContentsOfFile:libraryPath][@"Tracks"];
 
     self.tracks = [NSMutableArray arrayWithCapacity:tracks.count];
     for (NSString * key in [tracks keyEnumerator]) {
         [self.tracks
-         addObject:[Track withDictionary:[tracks objectForKey:key]]];
+         addObject:[Track withDictionary:tracks[key]]];
     }
 
     [self.tracks
@@ -371,8 +370,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *userPref = [userDefaults persistentDomainForName:@"com.apple.iApps"];
 
-    NSArray *recentDatabases = [userPref objectForKey:@"iTunesRecentDatabases"];
-    NSString *path = [recentDatabases objectAtIndex:0];
+    NSArray *recentDatabases = userPref[@"iTunesRecentDatabases"];
+    NSString *path = recentDatabases[0];
     if (!path)
         return ITUNESLIBRARY;
     return [[NSURL URLWithString:path] path];
@@ -384,7 +383,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
                    stringByDeletingLastPathComponent]];
 
     self.fsevents = [[CDEvents alloc]
-                     initWithURLs:[NSArray arrayWithObject:url]
+                     initWithURLs:@[url]
                      block:^(CDEvents *watcher, CDEvent *event) {
                          [self checkLibraryModifications];
                      }];

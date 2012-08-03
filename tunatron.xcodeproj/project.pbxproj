@@ -313,7 +313,7 @@
 		9462922B15A1EE750067701C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 9462922E15A1EE750067701C /* Build configuration list for PBXProject "tunatron" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -489,6 +489,7 @@
 		9462925315A1EE750067701C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -504,6 +505,7 @@
 		9462925415A1EE750067701C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

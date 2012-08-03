@@ -19,20 +19,12 @@
     SearchIndex *new = [super new];
     new.tracks = tracks;
     NSInteger len = tracks.count;
-    new.searchFields = [NSArray arrayWithObjects:
-                        @"artist",
-                        @"albumArtist",
-                        @"year",
-                        @"album",
-                        @"name",
-                        nil];
-    new.indexes = [NSArray arrayWithObjects:
-                   [NSMutableArray arrayWithCapacity:len],
-                   [NSMutableArray arrayWithCapacity:len],
-                   [NSMutableArray arrayWithCapacity:len],
-                   [NSMutableArray arrayWithCapacity:len],
-                   [NSMutableArray arrayWithCapacity:len],
-                   nil];
+    new.searchFields = @[@"artist", @"albumArtist", @"year", @"album", @"name"];
+    new.indexes = @[[NSMutableArray arrayWithCapacity:len],
+        [NSMutableArray arrayWithCapacity:len],
+        [NSMutableArray arrayWithCapacity:len],
+        [NSMutableArray arrayWithCapacity:len],
+        [NSMutableArray arrayWithCapacity:len]];
     [new generateIndex];
     return new;
 }
@@ -42,12 +34,12 @@
     NSMutableArray *index;
 
     for (int i = 0; i < self.searchFields.count; i++) {
-        field = [self.searchFields objectAtIndex:i];
-        index = [self.indexes objectAtIndex:i];
+        field = self.searchFields[i];
+        index = self.indexes[i];
 
         [self.tracks
          enumerateObjectsUsingBlock:^(Track *track, NSUInteger idx, BOOL *stop) {
-             id val = [track valueForKey:field];
+             id val = track[field];
              if (val == nil) {
                  [index addObject:@""];
              } else {
@@ -60,7 +52,7 @@
 
 - (BOOL)term:(NSString *)term contains:(unichar *)needleb {
     int idx = -1;
-    int tl = term.length;
+    NSUInteger tl = term.length;
     int j;
     BOOL found;
 
@@ -96,29 +88,29 @@
         NSMutableSet *found = [NSMutableSet new];
         [results addObject:found];
 
-        int l = word.length;
+        NSUInteger l = word.length;
         unichar needleb[l + 1];
         [word getCharacters:needleb range:NSMakeRange(0, l)];
         needleb[l] = 0;
 
         for (NSMutableArray *index in self.indexes) {
             for (int i = 0; i < index.count; i++) {
-                NSString * term = [index objectAtIndex:i];
+                NSString * term = index[i];
                 if ([self term:term contains:needleb]) {
-                    [found addObject:[NSNumber numberWithInt:i]];
+                    [found addObject:@(i)];
                 }
             }
         }
     }];
 
-    NSMutableSet *found = [results objectAtIndex:0];
+    NSMutableSet *found = results[0];
     for (int i = 1; i < results.count; i++) {
-        [found intersectSet:[results objectAtIndex:i]];
+        [found intersectSet:results[i]];
     }
 
     NSMutableArray *tracks = [NSMutableArray arrayWithCapacity:found.count];
     for (NSNumber *x in found) {
-        [tracks addObject:[self.tracks objectAtIndex:x.intValue]];
+        [tracks addObject:self.tracks[x.intValue]];
     }
 
     [tracks

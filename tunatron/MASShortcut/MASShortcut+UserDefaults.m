@@ -30,7 +30,7 @@
 + (void)registerGlobalShortcutWithUserDefaultsKey:(NSString *)userDefaultsKey handler:(void (^)())handler;
 {
     MASShortcutHotKey *hotKey = [[MASShortcutHotKey alloc] initWithUserDefaultsKey:userDefaultsKey handler:handler];
-    [[self registeredHotKeys] setObject:hotKey forKey:userDefaultsKey];
+    [self registeredHotKeys][userDefaultsKey] = hotKey;
 }
 
 + (void)unregisterGlobalShortcutWithUserDefaultsKey:(NSString *)userDefaultsKey
