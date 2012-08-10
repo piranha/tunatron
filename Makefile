@@ -1,9 +1,9 @@
 default: tunatron.zip
 
-build:
+compile:
 	xcodebuild CONFIGURATION_BUILD_DIR=Release
 
-tunatron.zip: build
+tunatron.zip: compile
 	@rm -rf tunatron.app tunatron.zip
 	mv Release/tunatron.app .
 	zip -r tunatron.zip tunatron.app
