@@ -17,7 +17,10 @@ slow and inefficient search, or if you like how Foobar search works, or if you
 like Textmate/emacs' ido-mode/vim's command-T scatter matching for searching for
 files.
 
-TODO:
+## TODO
 
+ - improve searching (use smarter index/dictionaries, etc)
+ - use persistent id: track number to search for a song instead of current
+   iteration
  - album cover images in separate column
  - playing queue maybe?
