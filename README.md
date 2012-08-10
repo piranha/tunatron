@@ -13,9 +13,13 @@ Some notes:
    code).
 
 I'm not sure if I forgot anything? Whatever, just try it, if you despise iTunes
-slow and inefficient search, or if you like how Foobar search works, or if you
-like Textmate/emacs' ido-mode/vim's command-T scatter matching for searching for
-files.
+slow and inefficient search, or if you like how Foobar2000 search works, or if
+you like Textmate/emacs' ido-mode/vim's command-T scatter matching for searching
+for files.
+
+Here's how it looks like:
+
+![tunatron](http://i.imgur.com/ctclr.png)
 
 ## TODO
 
