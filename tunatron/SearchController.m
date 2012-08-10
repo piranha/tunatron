@@ -379,8 +379,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 - (void)iTunesLibraryWatch {
     NSURL *url = [NSURL URLWithString:
-                  [[self iTunesLibraryPath]
-                   stringByDeletingLastPathComponent]];
+                  [[[self iTunesLibraryPath]
+                   stringByDeletingLastPathComponent]
+                   stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 
     self.fsevents = [[CDEvents alloc]
                      initWithURLs:@[url]
