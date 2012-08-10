@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -33,6 +33,12 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>LSUIElement</key>
+	<true/>
+	<key>SUPublicDSAKeyFile</key>
+	<string>tunatron-public.pem</string>
+	<key>SUFeedURL</key>
+	<string>https://github.com/piranha/tunatron/raw/master/appcast.xml</string>
+	<key>SUEnableAutomaticChecks</key>
 	<true/>
 </dict>
 </plist>

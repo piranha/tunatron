@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Tunatron Changelog</title>
+    <link>https://github.com/piranha/tunatron/raw/master/appcast.xml</link>
+    <description>Most recent changes with links to updates.</description>
+    <language>en</language>
+    <item>
+      <title>Version 1</title>
+      <description><![CDATA[
+      <h2>First public release!</h2>
+      ]]></description>
+      <pubDate>Fri, 10 Aug 2012 19:10:00 +0200</pubDate>
+      <enclosure url="https://github.com/downloads/piranha/tunatron/tunatron-1.zip"
+                 sparkle:version="1"
+                 length="1437033"
+                 type="application/octet-stream"
+                 sparkle:dsaSignature="MC0CFQCJJj4NB/bF0QFnw+e/7qB0bey0qwIULy7Ywa2+8fdNFKGfVP6m3etjD04=" />
+    </item>
+  </channel>
+</rss>

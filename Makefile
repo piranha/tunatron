@@ -1,18 +1,20 @@
-default: tunatron.zip
+VERSION := $(shell /usr/libexec/PlistBuddy -c 'Print CFBundleVersion' tunatron/tunatron-Info.plist)
+
+default: tunatron-$(VERSION).zip
 
 compile:
 	xcodebuild CONFIGURATION_BUILD_DIR=Release
 
-tunatron.zip: compile
-	@rm -rf tunatron.app tunatron.zip
+tunatron-$(VERSION).zip: compile
+	@rm -rf tunatron.app tunatron*.zip
 	mv Release/tunatron.app .
-	zip -r tunatron.zip tunatron.app
+	zip -r tunatron-$(VERSION).zip tunatron.app
 	rm -rf Release
 
-upload: tunatron.zip
-	github-upload.py tunatron.zip
+upload: tunatron-$(VERSION).zip
+	github-upload.py tunatron-$(VERSION).zip
 
-install: tunatron.zip
+install: tunatron-$(VERSION).zip
 	rm -rf /Applications/tunatron.app
 	mv tunatron.app /Applications/
 

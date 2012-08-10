@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		940B48C915D5653F000A224D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940B48C815D5653F000A224D /* Sparkle.framework */; };
+		940B48CB15D56594000A224D /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 940B48C815D5653F000A224D /* Sparkle.framework */; };
+		940B48CD15D567B4000A224D /* tunatron-public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 940B48CC15D567B4000A224D /* tunatron-public.pem */; };
 		940C973D15CA737E00DE345D /* CDEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 940C972515CA737E00DE345D /* CDEvent.m */; };
 		940C973E15CA737E00DE345D /* CDEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 940C972715CA737E00DE345D /* CDEvents.m */; };
 		940C973F15CA737E00DE345D /* CDEventsTestApp-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 940C972D15CA737E00DE345D /* CDEventsTestApp-Info.plist */; };
@@ -56,7 +59,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		940B48CA15D56583000A224D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				940B48CB15D56594000A224D /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		940B48C815D5653F000A224D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		940B48CC15D567B4000A224D /* tunatron-public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "tunatron-public.pem"; sourceTree = "<group>"; };
 		940C972415CA737E00DE345D /* CDEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEvent.h; sourceTree = "<group>"; };
 		940C972515CA737E00DE345D /* CDEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEvent.m; sourceTree = "<group>"; };
 		940C972615CA737E00DE345D /* CDEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEvents.h; sourceTree = "<group>"; };
@@ -122,6 +140,7 @@
 				9432650215A7297400CCA026 /* Carbon.framework in Frameworks */,
 				9462925F15A32F700067701C /* ScriptingBridge.framework in Frameworks */,
 				9462923915A1EE750067701C /* Cocoa.framework in Frameworks */,
+				940B48C915D5653F000A224D /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +180,7 @@
 		943264E115A7246B00CCA026 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				940B48CC15D567B4000A224D /* tunatron-public.pem */,
 				94BF47CC15A82512004A4593 /* fish-glyph-24.png */,
 				943264E215A7246B00CCA026 /* fish-glyph.icns */,
 			);
@@ -216,6 +236,7 @@
 		9462923715A1EE750067701C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				940B48C815D5653F000A224D /* Sparkle.framework */,
 				9432650115A7297400CCA026 /* Carbon.framework */,
 				9462925E15A32F700067701C /* ScriptingBridge.framework */,
 				9462923815A1EE750067701C /* Cocoa.framework */,
@@ -297,6 +318,7 @@
 				9462923015A1EE750067701C /* Sources */,
 				9462923115A1EE750067701C /* Frameworks */,
 				9462923215A1EE750067701C /* Resources */,
+				940B48CA15D56583000A224D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -373,6 +395,7 @@
 				940C974215CA737E00DE345D /* LICENSE in Resources */,
 				940C974315CA737E00DE345D /* README.mdown in Resources */,
 				940C974415CA737E00DE345D /* version.plist in Resources */,
+				940B48CD15D567B4000A224D /* tunatron-public.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
