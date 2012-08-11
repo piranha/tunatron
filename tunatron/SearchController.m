@@ -118,10 +118,16 @@
 }
 
 - (void)playSelectedTrack {
-    ScoredTrack *current = self.found[self.table.selectedRow];
-    if (current) {
-        [self play:current.track];
+    if (self.found.count == 0) return;
+    ScoredTrack *current;
+
+    if (self.table.selectedRow == NSNotFound) {
+        current = self.found[0];
+    } else {
+        current = self.found[self.table.selectedRow];
     }
+
+    [self play:current.track];
 }
 
 - (Track *)playingTrack {
