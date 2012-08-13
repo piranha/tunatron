@@ -6,8 +6,8 @@ that's all it intends to do. Set a global hotkey, and you're good.
 
 Some notes:
 
- - The interface is not exceptionally pretty, just barely useful - if you want
-   to fix that, please contribute (either with ideas what to do or with code).
+ - The interface is not exceptionally pretty, just useful - if you want to fix
+   that, please contribute (either with ideas what to do or with code).
  - I'm not an experienced Cocoa developer, so if you see ways to improve code,
    they are very welcome (in case of better idiomas or better separation of
    code).
