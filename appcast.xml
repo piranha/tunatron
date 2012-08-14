@@ -7,6 +7,22 @@
     <language>en</language>
 
     <item>
+      <title>Version 3</title>
+      <description><![CDATA[
+      <ul>
+        <li>Fix formatting of year under Mountain Lion.</li>
+        <li>Do not use deprecated APIs on Mountain Lion.</li>
+      </ul>
+      ]]></description>
+      <pubDate>Tue, 14 Aug 2012 13:20:00 +0200</pubDate>
+      <enclosure url="https://github.com/downloads/piranha/tunatron/tunatron-3.zip"
+                 sparkle:version="3"
+                 length="1437616"
+                 type="application/octet-stream"
+                 sparkle:dsaSignature="MC0CFQCIkZlKDodEw3/fnLQJinYhn6+etwIUQGhbI00fQnqd3kkNgK84Tvn6z14=" />
+    </item>
+
+    <item>
       <title>Version 2</title>
       <description><![CDATA[
       <ul>
