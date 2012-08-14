@@ -70,7 +70,10 @@
     CGFloat iconX = roundf((NSWidth(bounds) - size.width) / 2);
     CGFloat iconY = roundf((NSHeight(bounds) - size.height) / 2);
     NSPoint iconPoint = NSMakePoint(iconX, iconY);
-    [icon compositeToPoint:iconPoint operation:NSCompositeSourceOver];  
+    [icon drawAtPoint:iconPoint
+             fromRect:NSZeroRect
+            operation:NSCompositeSourceOver
+             fraction:1.0];
 }
 
 #pragma mark - Mouse Tracking
