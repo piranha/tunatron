@@ -326,9 +326,19 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         return NULL;
     }
 
-    return item.track[[tableColumn identifier]];
+    return item.track[tableColumn.identifier];
 }
 
+- (void)tableView:tableView
+willDisplayCell:(id)cell
+forTableColumn:(NSTableColumn *)tableColumn
+        row:(NSInteger)row {
+    if ([tableColumn.identifier isEqualToString:@"year"]) {
+        NSNumberFormatter *f = [NSNumberFormatter new];
+        [f setUsesGroupingSeparator:NO];
+        [cell setFormatter:f];
+    }
+}
 
 #pragma mark - Utility
 
