@@ -7,6 +7,21 @@
     <language>en</language>
 
     <item>
+      <title>Version 4</title>
+      <description><![CDATA[
+      <ul>
+        <li>Fix crash while filtering.</li>
+      </ul>
+      ]]></description>
+      <pubDate>Tue, 08 Nov 2012 18:30:00 +0200</pubDate>
+      <enclosure url="https://github.com/downloads/piranha/tunatron/tunatron-4.zip"
+                 sparkle:version="4"
+                 length="1437856"
+                 type="application/octet-stream"
+                 sparkle:dsaSignature="MCwCFEHGyGfNKdi5b2oF0pd4JANh0InLAhQhYaKTtSO0XCmWUgWp9dFYJtK8qw==" />
+    </item>
+
+    <item>
       <title>Version 3</title>
       <description><![CDATA[
       <ul>
