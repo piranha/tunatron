@@ -418,7 +418,8 @@ forTableColumn:(NSTableColumn *)tableColumn
 }
 
 - (NSInteger)trackVisibleIndex:(Track *)track {
-    return [self.found
+    NSArray * found = [self.found copy];
+    return [found
             indexOfObjectPassingTest:^BOOL(ScoredTrack *st, NSUInteger idx, BOOL *stop) {
                 return st.track == track;
             }];
