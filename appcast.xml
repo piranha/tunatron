@@ -7,6 +7,21 @@
     <language>en</language>
 
     <item>
+      <title>Version 5</title>
+      <description><![CDATA[
+      <ul>
+        <li>Fix crash with unsynced threads. Again.</li>
+      </ul>
+      ]]></description>
+      <pubDate>Thu, 22 Nov 2012 17:17:00 +0200</pubDate>
+      <enclosure url="https://github.com/downloads/piranha/tunatron/tunatron-5.zip"
+                 sparkle:version="5"
+                 length="1438192"
+                 type="application/octet-stream"
+                 sparkle:dsaSignature="MCwCFFEOamk6irtO9/wYb8+gEhXb9MZhAhRmJVM034dofpEzAJI1vUjO0f0lig==" />
+    </item>
+
+    <item>
       <title>Version 4</title>
       <description><![CDATA[
       <ul>

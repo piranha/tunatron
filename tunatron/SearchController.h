@@ -27,7 +27,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 @property (strong) NSMutableArray *tracks;
 @property (strong) SearchIndex *index;
 @property (strong) iTunesApplication *itunes;
-@property dispatch_source_t source;
+@property dispatch_source_t searchQueue;
 @property (strong) CDEvents *fsevents;
 @property (strong) NSDate *libraryDate;
 

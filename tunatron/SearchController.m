@@ -20,7 +20,7 @@
 @synthesize tracks = _tracks;
 @synthesize index = _index;
 @synthesize itunes = _itunes;
-@synthesize source = _source;
+@synthesize searchQueue = _searchQueue;
 @synthesize fsevents = _fsevents;
 @synthesize libraryDate = _libraryDate;
 
@@ -38,22 +38,8 @@
     self.itunes = [SBApplication
                    applicationWithBundleIdentifier:@"com.apple.iTunes"];
 
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-
-    // setup 'search is done' queue and event handler
-    self.source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
-    dispatch_source_set_event_handler(self.source, ^{
-//        NSDate *start = [NSDate date];
-//        NSString *s = self.currentSearch;
-
-        NSArray * found = [self innerSearchFor:self.currentSearch];
-
-//        NSTimeInterval duration = fabs([start timeIntervalSinceNow]);
-//        NSLog(@"Search '%@' has taken %fs", s, duration);
-
-        [self updateFound:found];
-    });
-    dispatch_resume(self.source);
+    // setup search queue/handler
+    [self setupSearch];
 
     // watcher will load library for a first time
     [self iTunesLibraryWatch];
@@ -65,15 +51,35 @@
            selector:@selector(playingTrackChanged:)
                name:@"com.apple.iTunes.playerInfo"
              object:nil];
-
 }
 
 
 #pragma mark - Searching
 
+- (void)setupSearch {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    // setup 'search is done' queue and event handler
+    self.searchQueue = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_OR, 0, 0, queue);
+    dispatch_source_set_event_handler(self.searchQueue, ^{
+        //        NSDate *start = [NSDate date];
+        //        NSString *s = self.currentSearch;
+
+        NSArray * found = [self innerSearchFor:self.currentSearch];
+
+        //        NSTimeInterval duration = fabs([start timeIntervalSinceNow]);
+        //        NSLog(@"Search '%@' has taken %fs", s, duration);
+
+        [self updateFound:found];
+    });
+    dispatch_resume(self.searchQueue);
+}
+
 - (void)searchFor:(NSString *)value {
     self.currentSearch = value;
-    dispatch_source_merge_data(self.source, 1);
+
+    // send event to search queue
+    dispatch_source_merge_data(self.searchQueue, 1);
 }
 
 - (NSArray *)innerSearchFor:(NSString *)value {
@@ -89,10 +95,15 @@
 
 
 - (void)updateFound:(NSArray *)replacement {
-    NSRange allFound = NSMakeRange(0, self.found.count);
-    [self.found
-     replaceObjectsInRange:allFound
-     withObjectsFromArray:replacement];
+    NSRange allFound;
+
+    @synchronized(self.found) {
+        allFound = NSMakeRange(0, self.found.count);
+        [self.found
+         replaceObjectsInRange:allFound
+         withObjectsFromArray:replacement];
+    }
+
     [self.table reloadData];
     [self scrollToSelected];
 }
@@ -319,7 +330,11 @@ doCommandBySelector:(SEL)selector {
 - (id)tableView:(NSTableView *)tableView
 objectValueForTableColumn:(NSTableColumn *)tableColumn
             row:(NSInteger)row {
-    ScoredTrack * item = self.found[row];
+    ScoredTrack * item;
+
+    @synchronized(self.found) {
+        item = self.found[row];
+    }
 
     if (item == NULL) {
         NSLog(@"No track at index %ld", row);
@@ -418,7 +433,12 @@ forTableColumn:(NSTableColumn *)tableColumn
 }
 
 - (NSInteger)trackVisibleIndex:(Track *)track {
-    NSArray * found = [self.found copy];
+    NSArray * found;
+
+    @synchronized(self.found) {
+        found = [self.found copy];
+    }
+
     return [found
             indexOfObjectPassingTest:^BOOL(ScoredTrack *st, NSUInteger idx, BOOL *stop) {
                 return st.track == track;
