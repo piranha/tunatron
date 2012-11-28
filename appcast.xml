@@ -7,6 +7,22 @@
     <language>en</language>
 
     <item>
+      <title>Version 6</title>
+      <description><![CDATA[
+      <ul>
+        <li>Copy artist name to clipboard instead of album artist name.</li>
+      </ul>
+      ]]></description>
+      <pubDate>Thu, 28 Nov 2012 22:19:00 +0200</pubDate>
+      <enclosure url="https://github.com/downloads/piranha/tunatron/tunatron-6.zip"
+                 sparkle:version="6"
+                 length="1438179"
+                 type="application/octet-stream"
+                 sparkle:dsaSignature="MC0CFCHc24LGWAuvKs4V7BvSe6/fFahZAhUAygQcA5gVGc1msgE/5lq1M8Zs1vk=" />
+    </item>
+
+
+    <item>
       <title>Version 5</title>
       <description><![CDATA[
       <ul>
