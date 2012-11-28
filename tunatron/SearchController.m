@@ -333,7 +333,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     ScoredTrack * item;
 
     @synchronized(self.found) {
-        item = self.found[row];
+        if (self.found.count > row) {
+            item = self.found[row];
+        }
     }
 
     if (item == NULL) {
