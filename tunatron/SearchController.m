@@ -244,7 +244,7 @@ doCommandBySelector:(SEL)selector {
             NSPasteboard *board = [NSPasteboard generalPasteboard];
             [board declareTypes:@[NSPasteboardTypeString]
                           owner:nil];
-            [board setString:[self currentTrack].shortRepr
+            [board setString:self.currentTrack.clipboardRepr
                      forType:NSPasteboardTypeString];
             return YES;
         }

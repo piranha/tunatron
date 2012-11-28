@@ -26,6 +26,6 @@
 @property (copy) NSString *name;
 
 @property (strong) NSString *repr;
-@property (readonly) NSString *shortRepr;
+@property (readonly) NSString *clipboardRepr;
 
 @end

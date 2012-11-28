@@ -52,9 +52,9 @@
             self.name];
 }
 
-- (NSString *)shortRepr {
+- (NSString *)clipboardRepr {
     return [NSString stringWithFormat:@"%@ - %@ - %@",
-            self.albumArtist ? self.albumArtist : self.artist,
+            self.artist,
             self.album,
             self.name];
 }
